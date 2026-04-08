@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StudyLink | Biblioteca de Materiais</title>
+
+<link rel="icon" type="image/png" href="favicon.png">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+background:#f4f6fb;
+color:#333;
+}
+
+/* NAVBAR */
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 8%;
+background:white;
+box-shadow:0 2px 8px rgba(0,0,0,0.05);
+}
+
+.logo{
+font-size:22px;
+font-weight:bold;
+color:#2563eb;
+}
+
+nav a{
+margin-left:25px;
+text-decoration:none;
+color:#444;
+font-weight:500;
+}
+
+nav a:hover{
+color:#2563eb;
+}
+
+/* CONTAINER */
+
+.container{
+max-width:1000px;
+margin:auto;
+padding:40px 20px;
+}
+
+/* SEARCH */
+
+.search{
+display:flex;
+gap:10px;
+margin-bottom:30px;
+}
+
+.search input{
+flex:1;
+padding:12px;
+border-radius:6px;
+border:1px solid #ddd;
+}
+
+.search button{
+padding:12px 20px;
+border:none;
+background:#2563eb;
+color:white;
+border-radius:6px;
+cursor:pointer;
+}
+
+/* CATEGORY */
+
+.categories{
+margin-bottom:30px;
+}
+
+.category{
+display:inline-block;
+background:#e0e7ff;
+color:#3730a3;
+padding:6px 14px;
+border-radius:20px;
+font-size:13px;
+margin-right:10px;
+margin-bottom:10px;
+}
+
+/* MATERIAL CARDS */
+
+.materials{
+display:grid;
+grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
+gap:20px;
+}
+
+.material{
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0 4px 12px rgba(0,0,0,0.05);
+}
+
+.material h3{
+margin-bottom:10px;
+color:#1e3a8a;
+}
+
+.material p{
+font-size:14px;
+margin-bottom:10px;
+}
+
+.material button{
+background:#10b981;
+border:none;
+padding:10px 18px;
+border-radius:6px;
+color:white;
+cursor:pointer;
+}
+
+/* FOOTER */
+
+footer{
+margin-top:60px;
+background:#111827;
+color:#aaa;
+text-align:center;
+padding:25px;
+font-size:14px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">StudyLink</div>
+
+<nav>
+<a href="index.html">Início</a>
+<a href="forum.html">Fórum</a>
+<a href="materiais.html">Materiais</a>
+<a href="mentoria.html">Mentoria</a>
+<a id="loginLink" href="login.html">Login</a>
+</nav>
+
+</header>
+
+<div class="container">
+
+<h1>Biblioteca de Materiais</h1>
+
+<br>
+
+<div class="search">
+<input type="text" placeholder="Pesquisar material...">
+<button>Buscar</button>
+</div>
+
+<div class="categories">
+<span class="category">HTML</span>
+<span class="category">CSS</span>
+<span class="category">UX/UI</span>
+<span class="category">Logística</span>
+<span class="category">Supply Chain</span>
+</div>
+
+<div class="materials">
+
+<div class="material">
+<h3>Guia Completo de HTML5</h3>
+<p>Apostila com estrutura de páginas, tags principais e boas práticas.</p>
+<button>Baixar</button>
+</div>
+
+<div class="material">
+<h3>CSS Flexbox e Grid na Prática</h3>
+<p>Material com exemplos reais de layout responsivo.</p>
+<button>Baixar</button>
+</div>
+
+<div class="material">
+<h3>Introdução ao UX/UI Design</h3>
+<p>Conceitos fundamentais para criar interfaces modernas e intuitivas.</p>
+<button>Baixar</button>
+</div>
+
+<div class="material">
+<h3>Fundamentos de Logística</h3>
+<p>PDF explicando transporte, armazenagem e distribuição.</p>
+<button>Baixar</button>
+</div>
+
+<div class="material">
+<h3>Gestão da Cadeia de Suprimentos</h3>
+<p>Material sobre supply chain e otimização de processos.</p>
+<button>Baixar</button>
+</div>
+
+<div class="material">
+<h3>Boas Práticas de Web Design Responsivo</h3>
+<p>Guia para adaptar sites a diferentes dispositivos.</p>
+<button>Baixar</button>
+</div>
+
+</div>
+
+</div>
+
+<footer>
+
+<p>StudyLink • Plataforma colaborativa de estudos</p>
+
+</footer>
+
+<script>
+
+let loginLink = document.getElementById("loginLink");
+
+if(localStorage.getItem("usuarioLogado") === "true"){
+
+loginLink.textContent = "Perfil";
+loginLink.href = "perfil.html";
+
+}
+
+</script>
+
+</body>
+</html>

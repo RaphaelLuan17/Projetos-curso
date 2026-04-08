@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StudyLink | Biblioteca de Materiais</title>
+
+<link rel="icon" type="image/png" href="favicon.png">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+background:#f4f6fb;
+color:#333;
+}
+
+/* NAVBAR */
+
+header{
+position:sticky;
+top:0;
+z-index:1000;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 8%;
+background:white;
+box-shadow:0 2px 10px rgba(0,0,0,0.06);
+}
+
+.logo{
+font-size:22px;
+font-weight:bold;
+color:#2563eb;
+}
+
+nav a{
+margin-left:25px;
+text-decoration:none;
+color:#444;
+font-weight:500;
+transition:0.3s;
+}
+
+nav a:hover{
+color:#2563eb;
+}
+
+/* CONTAINER */
+
+.container{
+max-width:1100px;
+margin:auto;
+padding:40px 20px;
+}
+
+h1{
+margin-bottom:20px;
+}
+
+/* SEARCH */
+
+.search{
+display:flex;
+gap:10px;
+margin-bottom:30px;
+}
+
+.search input{
+flex:1;
+padding:12px;
+border-radius:6px;
+border:1px solid #ddd;
+outline:none;
+}
+
+.search button{
+padding:12px 20px;
+border:none;
+background:#2563eb;
+color:white;
+border-radius:6px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.search button:hover{
+background:#1e40af;
+}
+
+/* CATEGORY */
+
+.categories{
+margin-bottom:30px;
+}
+
+.category{
+display:inline-block;
+background:#e0e7ff;
+color:#3730a3;
+padding:6px 14px;
+border-radius:20px;
+font-size:13px;
+margin-right:10px;
+margin-bottom:10px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.category:hover{
+background:#c7d2fe;
+}
+
+/* MATERIAL CARDS */
+
+.materials{
+display:grid;
+grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
+gap:20px;
+}
+
+.material{
+background:white;
+padding:20px;
+border-radius:12px;
+box-shadow:0 4px 12px rgba(0,0,0,0.05);
+transition:0.3s;
+}
+
+.material:hover{
+transform:translateY(-5px);
+box-shadow:0 10px 20px rgba(0,0,0,0.08);
+}
+
+.material h3{
+margin-bottom:10px;
+color:#1e3a8a;
+}
+
+.material p{
+font-size:14px;
+margin-bottom:12px;
+}
+
+.material button{
+background:#10b981;
+border:none;
+padding:10px 18px;
+border-radius:6px;
+color:white;
+cursor:pointer;
+transition:0.3s;
+}
+
+.material button:hover{
+background:#059669;
+}
+
+/* FOOTER */
+
+footer{
+margin-top:60px;
+background:#111827;
+color:#aaa;
+text-align:center;
+padding:25px;
+font-size:14px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">StudyLink</div>
+
+<nav>
+<a href="index.html">Início</a>
+<a href="forum.html">Fórum</a>
+<a href="materiais.html">Materiais</a>
+<a href="mentoria.html">Mentoria</a>
+<a id="loginLink" href="login.html">Login</a>
+</nav>
+
+</header>
+
+<div class="container">
+
+<h1>📚 Biblioteca de Materiais</h1>
+
+<div class="search">
+<input type="text" id="searchInput" placeholder="Pesquisar material...">
+<button onclick="buscar()">Buscar</button>
+</div>
+
+<div class="categories">
+<span class="category" onclick="filtrar('all')">Todos</span>
+<span class="category" onclick="filtrar('html')">HTML</span>
+<span class="category" onclick="filtrar('css')">CSS</span>
+<span class="category" onclick="filtrar('ux')">UX/UI</span>
+<span class="category" onclick="filtrar('logistica')">Logística</span>
+</div>
+
+<div class="materials" id="listaMateriais">
+
+<div class="material" data-cat="html">
+<h3>Guia Completo de HTML5</h3>
+<p>Apostila com estrutura de páginas, tags principais e boas práticas.</p>
+<button>Baixar</button>
+</div>
+
+<div class="material" data-cat="css">
+<h3>CSS Flexbox e Grid na Prática</h3>
+<p>Material com exemplos reais de layout responsivo.</p>
+<button>Baixar</button>
+</div>
+
+<div class="material" data-cat="ux">
+<h3>Introdução ao UX/UI Design</h3>
+<p>Conceitos fundamentais para criar interfaces modernas.</p>
+<button>Baixar</button>
+</div>
+
+<div class="material" data-cat="logistica">
+<h3>Fundamentos de Logística</h3>
+<p>PDF explicando transporte, armazenagem e distribuição.</p>
+<button>Baixar</button>
+</div>
+
+</div>
+
+</div>
+
+<footer>
+<p>StudyLink • Plataforma colaborativa de estudos</p>
+</footer>
+
+<script>
+
+// LOGIN
+let loginLink = document.getElementById("loginLink");
+
+if(localStorage.getItem("usuarioLogado") === "true"){
+loginLink.textContent = "Perfil";
+loginLink.href = "perfil.html";
+}
+
+// BUSCA
+function buscar(){
+let input = document.getElementById("searchInput").value.toLowerCase();
+let materiais = document.querySelectorAll(".material");
+
+materiais.forEach(mat => {
+let texto = mat.innerText.toLowerCase();
+mat.style.display = texto.includes(input) ? "block" : "none";
+});
+}
+
+// FILTRO
+function filtrar(categoria){
+let materiais = document.querySelectorAll(".material");
+
+materiais.forEach(mat => {
+if(categoria === "all"){
+mat.style.display = "block";
+} else {
+mat.style.display = mat.dataset.cat === categoria ? "block" : "none";
+}
+});
+}
+
+</script>
+
+</body>
+</html>
