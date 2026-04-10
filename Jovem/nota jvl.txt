@@ -19,6 +19,36 @@ aprender sobre logística
 
 Planilhas (Excel / Google Sheets)
 
+ERP (Sistema de gestão)
+Controla estoque, vendas e compras em um só lugar
+Exemplos: SAP, Totvs
+
+WMS (Warehouse Management System)
+Sistema para gerenciar armazéns e estoques
+
+TMS (Transportation Management System)
+Sistema para controlar transporte e rotas
+
+Planejamento de rotas (apps como Google Maps, Waze)
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+mentoria add
+
+profissionais da área 
+
+professores
+
+botões para filtrar 
+
+funcionalidade ilustrativa 
+
+nota e avaliação
+
+colocar informações dos mentores quando o mouse em cima 
+
+
+
+
 
 
   

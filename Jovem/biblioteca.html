@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -19,12 +18,11 @@ font-family:Arial, Helvetica, sans-serif;
 }
 
 body{
-background:#f4f6fb;
+background:linear-gradient(135deg, #eef2ff, #f8fafc);
 color:#333;
 }
 
 /* NAVBAR */
-
 header{
 position:sticky;
 top:0;
@@ -33,14 +31,24 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 padding:18px 8%;
-background:white;
-box-shadow:0 6px 20px rgba(0,0,0,0.12);
+background:rgba(255,255,255,0.75);
+backdrop-filter:blur(12px);
+-webkit-backdrop-filter:blur(12px);
+box-shadow:0 8px 25px rgba(0,0,0,0.08);
+border-bottom:1px solid rgba(0,0,0,0.05);
 }
 
 .logo{
 font-size:22px;
 font-weight:bold;
 color:#2563eb;
+letter-spacing:1px;
+}
+
+nav{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
 }
 
 nav a{
@@ -48,7 +56,23 @@ margin-left:25px;
 text-decoration:none;
 color:#444;
 font-weight:500;
-transition:0.3s;
+transition:0.3s ease;
+position:relative;
+}
+
+nav a::after{
+content:"";
+position:absolute;
+bottom:-5px;
+left:0;
+width:0;
+height:2px;
+background:#2563eb;
+transition:0.3s ease;
+}
+
+nav a:hover::after{
+width:100%;
 }
 
 nav a:hover{
@@ -56,19 +80,18 @@ color:#2563eb;
 }
 
 /* CONTAINER */
-
 .container{
 max-width:1100px;
 margin:auto;
-padding:40px 20px;
+padding:50px 20px;
 }
 
 h1{
 margin-bottom:20px;
+font-size:28px;
 }
 
 /* SEARCH */
-
 .search{
 display:flex;
 gap:10px;
@@ -77,28 +100,19 @@ margin-bottom:30px;
 
 .search input{
 flex:1;
-padding:12px;
-border-radius:6px;
+padding:12px 15px;
+border-radius:10px;
 border:1px solid #ddd;
 outline:none;
+transition:0.25s;
 }
 
-.search button{
-padding:12px 20px;
-border:none;
-background:#2563eb;
-color:white;
-border-radius:6px;
-cursor:pointer;
-transition:0.3s;
-}
-
-.search button:hover{
-background:#1e40af;
+.search input:focus{
+border-color:#2563eb;
+box-shadow:0 0 0 4px rgba(37,99,235,0.15);
 }
 
 /* CATEGORY */
-
 .categories{
 margin-bottom:30px;
 }
@@ -107,60 +121,64 @@ margin-bottom:30px;
 display:inline-block;
 background:#e0e7ff;
 color:#3730a3;
-padding:6px 14px;
+padding:8px 16px;
 border-radius:20px;
 font-size:13px;
 margin-right:10px;
 margin-bottom:10px;
 cursor:pointer;
-transition:0.3s;
+transition:0.25s ease;
 }
 
 .category:hover{
 background:#c7d2fe;
+transform:translateY(-2px);
 }
 
-/* MATERIAL CARDS */
+.category.active{
+background:linear-gradient(135deg, #2563eb, #1d4ed8);
+color:white;
+box-shadow:0 6px 15px rgba(37,99,235,0.35);
+}
 
+/* GRID */
 .materials{
 display:grid;
-grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
-gap:20px;
+grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
+gap:22px;
 }
 
+/* CARD */
 .material{
 position:relative;
 overflow:hidden;
 background:white;
-padding:20px;
-border-radius:12px;
+padding:22px;
+border-radius:16px;
 border:1px solid rgba(0,0,0,0.04);
-box-shadow:
-0 4px 6px rgba(0,0,0,0.05),
-0 10px 20px rgba(0,0,0,0.10);
-transition:0.3s;
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
+transition:all 0.35s ease;
 }
 
 .material:hover{
 transform:translateY(-8px) scale(1.02);
-box-shadow:0 20px 40px rgba(0,0,0,0.20);
+box-shadow:0 25px 50px rgba(0,0,0,0.15);
 }
 
+/* efeito brilho */
 .material::after{
 content:"";
 position:absolute;
 top:0;
-left:0;
+left:-120%;
 width:100%;
 height:100%;
-border-radius:12px;
-background:linear-gradient(120deg, transparent, rgba(255,255,255,0.4), transparent);
-opacity:0;
-transition:0.4s;
+background:linear-gradient(120deg, transparent, rgba(255,255,255,0.6), transparent);
+transition:0.6s;
 }
 
 .material:hover::after{
-opacity:1;
+left:120%;
 }
 
 .material h3{
@@ -170,27 +188,31 @@ color:#1e3a8a;
 
 .material p{
 font-size:14px;
-margin-bottom:12px;
+margin-bottom:14px;
+color:#555;
+line-height:1.5;
 }
 
+/* BOTÃO */
 .material button{
-background:#10b981;
+background:linear-gradient(135deg, #10b981, #059669);
 border:none;
 padding:10px 18px;
-border-radius:6px;
+border-radius:10px;
 color:white;
 cursor:pointer;
-transition:0.3s;
+transition:0.25s ease;
+font-weight:500;
 }
 
 .material button:hover{
-background:#059669;
+transform:scale(1.07);
+box-shadow:0 8px 18px rgba(16,185,129,0.45);
 }
 
 /* FOOTER */
-
 footer{
-margin-top:60px;
+margin-top:70px;
 background:#111827;
 color:#aaa;
 text-align:center;
@@ -198,6 +220,23 @@ padding:25px;
 font-size:14px;
 }
 
+/* RESPONSIVO */
+@media(max-width:600px){
+
+header{
+flex-direction:column;
+gap:10px;
+}
+
+nav a{
+margin:5px 10px;
+}
+
+.search{
+flex-direction:column;
+}
+
+}
 </style>
 
 </head>
@@ -209,11 +248,11 @@ font-size:14px;
 <div class="logo">StudyLink</div>
 
 <nav>
-<a href="index.html">Início</a>
-<a href="forum.html">Fórum</a>
-<a href="materiais.html">Materiais</a>
-<a href="mentoria.html">Mentoria</a>
-<a id="loginLink" href="login.html">Login</a>
+<a href="#">Início</a>
+<a href="#">Fórum</a>
+<a href="#">Materiais</a>
+<a href="#">Mentoria</a>
+<a id="loginLink" href="#">Login</a>
 </nav>
 
 </header>
@@ -224,94 +263,140 @@ font-size:14px;
 
 <div class="search">
 <input type="text" id="searchInput" placeholder="Pesquisar material...">
-<button onclick="buscar()">Buscar</button>
 </div>
 
 <div class="categories">
-<span class="category" onclick="filtrar('all')">Todos</span>
-<span class="category" onclick="filtrar('html')">HTML</span>
-<span class="category" onclick="filtrar('css')">CSS</span>
-<span class="category" onclick="filtrar('ux')">UX/UI</span>
-<span class="category" onclick="filtrar('logistica')">Logística</span>
+<span class="category active" onclick="filtrar('all', this)">Todos</span>
+<span class="category" onclick="filtrar('html', this)">HTML</span>
+<span class="category" onclick="filtrar('css', this)">CSS</span>
+<span class="category" onclick="filtrar('ux', this)">UX/UI e Design</span>
+<span class="category" onclick="filtrar('logistica', this)">Logística</span>
 </div>
 
-<div class="materials" id="listaMateriais">
+<div class="materials">
 
-<div class="material" data-cat="html">
-<h3>Guia Completo de HTML5</h3>
-<p>Apostila com estrutura de páginas, tags principais e boas práticas.</p>
-<button>Baixar</button>
-</div>
+<!-- CARDS -->
 
-<div class="material" data-cat="css">
-<h3>CSS Flexbox e Grid na Prática</h3>
-<p>Material com exemplos reais de layout responsivo.</p>
-<button>Baixar</button>
-</div>
-
-<div class="material" data-cat="ux">
-<h3>Introdução ao UX/UI Design</h3>
-<p>Conceitos fundamentais para criar interfaces modernas.</p>
-<button>Baixar</button>
-</div>
-
-<div class="material" data-cat="logistica">
-<h3>Fundamentos de Logística</h3>
-<p>PDF explicando transporte, armazenagem e distribuição.</p>
-<button>Baixar</button>
-</div>
-
-<div class="material" data-cat="html">
-<h3>Introdução Bootstrap</h3>
-<p>PDF explicando como utilizar com exemplos e dicas.</p>
-<button>Baixar</button>
-</div>
-
-<div class="material" data-cat="html">
-<h3>Guia Completo JavaScript</h3>
-<p>PDF com exemplos práticos e uso em sites.</p>
-<button>Baixar</button>
-</div>
-
-<div class="material" data-cat="html">
-<h3>Guia Script HTML</h3>
-<p>Scripts simples e dicas para projetos web.</p>
-<button>Baixar</button>
-</div>
-
-<div class="material" data-cat="logistica">
-<h3>Guia Excel para Logística</h3>
-<p>Fórmulas, gráficos e automação simples.</p>
-<button>Baixar</button>
-</div>
-
-<div class="material" data-cat="logistica html">
-<h3>Uso de IA de maneira eficiente</h3>
-<p>Dicas para usar IA em web design e logística.</p>
-<button>Baixar</button>
-</div>
-
-<div class="material" data-cat="logistica">
-<h3>Guia e Dicas Canvas</h3>
-<p>Funções úteis e aplicações práticas.</p>
-<button>Baixar</button>
-</div>
-
-<div class="material" data-cat="html">
-<h3>Introdução ao Tratamento de Imagem</h3>
-<p>Ferramentas e boas práticas.</p>
-<button>Baixar</button>
-</div>
-
-<div class="material" data-cat="logistica html">
-<h3>Como montar protótipos de sites</h3>
-<p>Guia completo para entrevistas e projetos.</p>
-<button>Baixar</button>
-</div>
-
-</div>
-
-</div>
+<div class="material" data-id="1" data-cat="html">
+    <h3>Guia Completo de HTML5</h3>
+    <p>Apostila com estrutura de páginas, tags principais e boas práticas.</p>
+    <button onclick="baixar('HTML5')">Baixar</button>
+    
+    </div>
+    
+    <div class="material" data-id="2" data-cat="css">
+    <h3>CSS Flexbox e Grid na Prática</h3>
+    <p>Material com exemplos reais de layout responsivo.</p>
+    <button onclick="baixar('CSS Flexbox e Grid')">Baixar</button>
+    
+    </div>
+    
+    <div class="material" data-id="3" data-cat="ux">
+    <h3>Introdução ao UX/UI Design</h3>
+    <p>Conceitos fundamentais para criar interfaces modernas.</p>
+    <button onclick="baixar('UX/UI Design')">Baixar</button>
+    
+    </div>
+    
+    <div class="material" data-id="4" data-cat="logistica">
+    <h3>Fundamentos de Logística</h3>
+    <p>PDF explicando transporte, armazenagem e distribuição.</p>
+    <button onclick="baixar('Logística')">Baixar</button>
+    
+    </div>
+    
+    <div class="material" data-id="5" data-cat="html">
+    <h3>Introdução Bootstrap</h3>
+    <p>PDF explicando como utilizar com exemplos e dicas.</p>
+    <button onclick="baixar('Bootstrap')">Baixar</button>
+    
+    </div>
+    
+    <div class="material" data-id="6" data-cat="html">
+    <h3>Guia Completo JavaScript</h3>
+    <p>PDF com exemplos práticos e uso em sites.</p>
+    <button onclick="baixar('JavaScript')">Baixar</button>
+    
+    </div>
+    
+    <div class="material" data-id="7" data-cat="html">
+    <h3>Guia Script HTML</h3>
+    <p>Scripts simples e dicas para projetos web.</p>
+    <button onclick="baixar('Script HTML')">Baixar</button>
+    
+    </div>
+    
+    <div class="material" data-id="8" data-cat="logistica">
+    <h3>Guia Excel para Logística</h3>
+    <p>Fórmulas, gráficos e automação simples.</p>
+    <button onclick="baixar('Excel Logística')">Baixar</button>
+   
+    </div>
+    
+    <div class="material" data-id="9" data-cat="logistica html">
+    <h3>Uso de IA de maneira eficiente</h3>
+    <p>Dicas para usar IA em web design e logística.</p>
+    <button onclick="baixar('IA')">Baixar</button>
+    
+    </div>
+    
+    <div class="material" data-id="10" data-cat="ux">
+    <h3>Guia e Dicas Canvas</h3>
+    <p>Funções úteis e aplicações práticas.</p>
+    <button onclick="baixar('Canvas')">Baixar</button>
+    
+    </div>
+    
+    <div class="material" data-id="11" data-cat="html">
+    <h3>Introdução ao Tratamento de Imagem</h3>
+    <p>Ferramentas e boas práticas.</p>
+    <button onclick="baixar('Tratamento de Imagem')">Baixar</button>
+   
+    </div>
+    
+    <div class="material" data-id="12" data-cat="html">
+    <h3>Como montar protótipos de sites</h3>
+    <p>Guia completo para entrevistas e projetos.</p>
+    <button onclick="baixar('Protótipos')">Baixar</button>
+   
+    </div>
+    
+    <div class="material" data-id="13" data-cat="html">
+    <h3>Guia GitHub</h3>
+    <p>Guia completo para entrevistas e projetos.</p>
+    <button onclick="baixar('GitHub')">Baixar</button>
+    
+    </div>
+    
+    <div class="material" data-id="14" data-cat="logistica">
+    <h3>Guia Google Sheets</h3>
+    <p>Guia completo com dicas e exemplos.</p>
+    <button onclick="baixar('Google Sheets')">Baixar</button>
+    
+    </div>
+    
+    <div class="material" data-id="15" data-cat="logistica">
+    <h3>ERP - Sistema de Gestão</h3>
+    <p>Controla estoque, vendas e compras.</p>
+    <button onclick="baixar('ERP')">Baixar</button>
+    
+    </div>
+    
+    <div class="material" data-id="16" data-cat="logistica">
+    <h3>WMS - Gestão de Armazém</h3>
+    <p>Controle de estoque e organização.</p>
+    <button onclick="baixar('WMS')">Baixar</button>
+    
+    </div>
+    
+    <div class="material" data-id="17" data-cat="logistica">
+    <h3>TMS - Transporte</h3>
+    <p>Controle de rotas e entregas.</p>
+    <button onclick="baixar('TMS')">Baixar</button>
+    
+    </div>
+    
+    </div>
 
 <footer>
 <p>StudyLink • Plataforma colaborativa de estudos</p>
@@ -319,41 +404,41 @@ font-size:14px;
 
 <script>
 
-// LOGIN
-let loginLink = document.getElementById("loginLink");
-
-if(localStorage.getItem("usuarioLogado") === "true"){
-loginLink.textContent = "Perfil";
-loginLink.href = "perfil.html";
-}
-
-// BUSCA
-function buscar(){
-let input = document.getElementById("searchInput").value.toLowerCase();
-let materiais = document.querySelectorAll(".material");
-
-materiais.forEach(mat => {
-let texto = mat.innerText.toLowerCase();
-mat.style.display = texto.includes(input) ? "block" : "none";
-});
-}
-
-// FILTRO (MULTI-CATEGORIA)
-function filtrar(categoria){
-let materiais = document.querySelectorAll(".material");
-
-materiais.forEach(mat => {
-let cats = mat.dataset.cat.split(" ");
-
-if(categoria === "all" || cats.includes(categoria)){
-mat.style.display = "block";
-} else {
-mat.style.display = "none";
-}
-});
-}
-
-</script>
+    // LOGIN
+    if(localStorage.getItem("usuarioLogado") === "true"){
+    document.getElementById("loginLink").textContent = "Perfil";
+    }
+    
+    // BUSCA (CORRIGIDO)
+    const searchInput = document.getElementById("searchInput");
+    
+    searchInput.addEventListener("input", () => {
+    let input = searchInput.value.toLowerCase();
+    
+    document.querySelectorAll(".material").forEach(mat => {
+    let match = mat.innerText.toLowerCase().includes(input);
+    mat.style.display = match ? "" : "none"; // mantém o grid
+    });
+    });
+    
+    // FILTRO (CORRIGIDO)
+    function filtrar(cat, el){
+    document.querySelectorAll(".material").forEach(mat=>{
+    let cats = mat.dataset.cat.split(" ");
+    let match = (cat === "all" || cats.includes(cat));
+    mat.style.display = match ? "" : "none";
+    });
+    
+    // ativa botão
+    document.querySelectorAll(".category").forEach(c=>c.classList.remove("active"));
+    el.classList.add("active");
+    }
+    
+    // DOWNLOAD
+    function baixar(nome){
+    alert("Baixando: " + nome);
+    }
+    </script>
 
 </body>
 </html>
