@@ -1,18 +1,166 @@
 nota jvl
+Bootstrap/
 
-Bootstrap
+java script/
 
-java script
+script/
 
-script
+Uso de IA de maneira eficiente (para ambas as áreas)/
 
-Uso de IA de maneira eficiente (para ambas as áreas)
-
-dicas canva
+dicas canva/
 
 tratamento de imagem 
 
 como montar um bom protótipo
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+GitHub
+
+aprender sobre logística 
+
+Planilhas (Excel / Google Sheets)
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
  
     
