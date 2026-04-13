@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>StudyLink | Mentoria</title>
@@ -44,6 +43,7 @@ margin-left:25px;
 text-decoration:none;
 color:#444;
 font-weight:500;
+transition:0.2s;
 }
 
 nav a:hover{
@@ -59,23 +59,15 @@ padding:40px 20px;
 text-align:center;
 }
 
-.container h1{
-margin-bottom:15px;
-}
-
-/* BOTÃO TORNAR MENTOR */
-
-.become-mentor{
-margin-top:20px;
-}
+/* BOTÃO */
 
 .become-mentor button{
+margin-top:20px;
 background:#10b981;
 color:white;
 border:none;
 padding:14px 28px;
 border-radius:6px;
-font-size:16px;
 cursor:pointer;
 transition:0.3s;
 }
@@ -84,20 +76,91 @@ transition:0.3s;
 background:#059669;
 }
 
-/* GRID DE MENTORES */
+/* BUSCA */
+
+.search{
+display:flex;
+margin:25px 0;
+}
+
+.search input{
+width:100%;
+padding:12px;
+border-radius:10px;
+border:1px solid #ddd;
+outline:none;
+transition:0.2s;
+}
+
+.search input:focus{
+border-color:#2563eb;
+box-shadow:0 0 0 3px rgba(37,99,235,0.15);
+}
+
+/* CATEGORIAS */
+
+.categories{
+display:flex;
+gap:10px;
+justify-content:center;
+margin-bottom:20px;
+flex-wrap:wrap;
+}
+
+.category{
+padding:8px 14px;
+background:#e5e7eb;
+border-radius:20px;
+cursor:pointer;
+transition:0.2s;
+}
+
+.category.active,
+.category:hover{
+background:#2563eb;
+color:white;
+}
+
+/* GRID */
 
 .mentors{
 display:grid;
-grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:25px;
-margin-top:40px;
 }
+
+/* CARD */
 
 .mentor{
 background:white;
 padding:25px;
 border-radius:12px;
 box-shadow:0 4px 12px rgba(0,0,0,0.05);
+transition:0.3s;
+position:relative;
+overflow:hidden;
+}
+
+.mentor:hover{
+transform:translateY(-6px);
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* ✨ brilho animado */
+
+.mentor::after{
+content:"";
+position:absolute;
+top:0;
+left:-100%;
+width:100%;
+height:100%;
+background:linear-gradient(120deg,transparent,rgba(255,255,255,0.4),transparent);
+transition:0.6s;
+}
+
+.mentor:hover::after{
+left:100%;
 }
 
 .mentor img{
@@ -109,22 +172,72 @@ margin-bottom:15px;
 
 .mentor h3{
 color:#1e3a8a;
-margin-bottom:5px;
 }
 
 .mentor p{
 font-size:14px;
-margin-bottom:12px;
-color:#555;
+margin:10px 0;
 }
+
+/* BOTÃO CARD */
 
 .mentor button{
 background:#2563eb;
 color:white;
 border:none;
-padding:10px 18px;
+padding:10px;
 border-radius:6px;
 cursor:pointer;
+transition:0.2s;
+}
+
+.mentor button:hover{
+background:#1e40af;
+}
+
+/* ⭐ AVALIAÇÃO */
+
+.rating{
+margin:10px 0;
+font-size:18px;
+color:#fbbf24;
+}
+
+/* ❤️ FAVORITOS */
+
+.actions{
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.fav{
+font-size:22px;
+cursor:pointer;
+transition:0.2s;
+}
+
+.fav:hover{
+transform:scale(1.2);
+}
+
+.mentor::after{
+content:"";
+position:absolute;
+top:0;
+left:-100%;
+width:100%;
+height:100%;
+background:linear-gradient(120deg,transparent,rgba(255,255,255,0.4),transparent);
+transition:0.5s;
+}
+
+.mentor:hover::after{
+left:100%;
+}
+
+.fav.active{
+color:red;
 }
 
 /* FOOTER */
@@ -135,17 +248,14 @@ background:#111827;
 color:#aaa;
 text-align:center;
 padding:25px;
-font-size:14px;
 }
 
 </style>
-
 </head>
 
 <body>
 
 <header>
-
 <div class="logo">StudyLink</div>
 
 <nav>
@@ -155,85 +265,451 @@ font-size:14px;
 <a href="mentoria.html">Mentoria</a>
 <a id="loginLink" href="login.html">Login</a>
 </nav>
-
 </header>
 
 <div class="container">
 
 <h1>Mentoria com Ex-Alunos</h1>
-
-<p>
-Conecte-se com estudantes que já passaram pelo mesmo caminho e podem ajudar
-com conselhos, experiências e orientação de carreira.
-</p>
+<p>Conecte-se com estudantes que já passaram pelo mesmo caminho.</p>
 
 <div class="become-mentor">
 <button>Torne-se um mentor</button>
 </div>
 
+<div class="search">
+<input type="text" id="searchInput" placeholder="Pesquisar mentor...">
+</div>
+
+<div class="categories">
+<span class="category active" onclick="filtrar('all',this)">Todos</span>
+<span class="category" onclick="filtrar('ex',this)">Ex-Alunos</span>
+<span class="category" onclick="filtrar('prof',this)">Professores</span>
+<span class="category" onclick="filtrar('prof2',this)">Profissionais da Àrea</span>
+</div>
+
 <div class="mentors">
 
-<div class="mentor">
-<img src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png">
-<h3>Ana Silva</h3>
-<p>Ex-aluna • Logística</p>
-<button>Solicitar mentoria</button>
-</div>
-
-<div class="mentor">
-<img src="https://cdn-icons-png.flaticon.com/512/4140/4140051.png">
-<h3>Lucas Pereira</h3>
-<p>Ex-aluno • Logística</p>
-<button>Solicitar mentoria</button>
-</div>
-
-<div class="mentor">
-<img src="https://cdn-icons-png.flaticon.com/512/4140/4140061.png">
-<h3>Mariana Costa</h3>
-<p>Ex-aluna • Web Design</p>
-<button>Solicitar mentoria</button>
-</div>
-
-<div class="mentor">
-<img src="https://cdn-icons-png.flaticon.com/512/4140/4140037.png">
-<h3>Rafael Souza</h3>
-<p>Ex-aluno • Web Design</p>
-<button>Solicitar mentoria</button>
-</div>
-
-<div class="mentor">
+  <div class="mentor" data-cat="ex" data-id="1">
+    <img src="https://cdn-icons-png.flaticon.com/512/4140/4140047.png">
+    <h3>Ana Silva</h3>
+    <p>Ex-aluna • Web Design</p>
+    <div class="rating">⭐⭐⭐⭐⭐</div>
+    <div class="actions">
+    <button>Solicitar</button>
+    <span class="fav" onclick="toggleFav(this)">🤍</span>
+    </div>
+    </div>
+    
+    <div class="mentor" data-cat="ex" data-id="2">
+    <img src="https://cdn-icons-png.flaticon.com/512/4140/4140052.png">
+    <h3>Lucas Pereira</h3>
+    <p>Ex-aluno • Logística</p>
+    <div class="rating">⭐⭐⭐⭐</div>
+    <div class="actions">
+    <button>Solicitar</button>
+    <span class="fav" onclick="toggleFav(this)">🤍</span>
+    </div>
+    </div>
+    
+    <div class="mentor" data-cat="prof2" data-id="3">
+    <img src="https://cdn-icons-png.flaticon.com/512/4140/4140068.png">
+    <h3>Bruno Almeida</h3>
+    <p>Profissional • Web Design</p>
+    <div class="rating">⭐⭐⭐⭐⭐</div>
+    <div class="actions">
+    <button>Solicitar</button>
+    <span class="fav" onclick="toggleFav(this)">🤍</span>
+    </div>
+    </div>
+    
+    <div class="mentor" data-cat="prof" data-id="4">
+    <img src="https://cdn-icons-png.flaticon.com/512/4140/4140061.png">
+    <h3>Mariana Costa</h3>
+    <p>Professora • Web Design</p>
+    <div class="rating">⭐⭐⭐⭐⭐</div>
+    <div class="actions">
+    <button>Solicitar</button>
+    <span class="fav" onclick="toggleFav(this)">🤍</span>
+    </div>
+    </div>
+    
+    <div class="mentor" data-cat="prof2" data-id="5">
+    <img src="https://cdn-icons-png.flaticon.com/512/4140/4140064.png">
+    <h3>Fernanda Rocha</h3>
+    <p>Profissional • Web Design</p>
+    <div class="rating">⭐⭐⭐⭐</div>
+    <div class="actions">
+    <button>Solicitar</button>
+    <span class="fav" onclick="toggleFav(this)">🤍</span>
+    </div>
+    </div>
+    
+    <div class="mentor" data-cat="prof" data-id="6">
+    <img src="https://cdn-icons-png.flaticon.com/512/4140/4140037.png">
+    <h3>Rafael Souza</h3>
+    <p>Professor • Web Design</p>
+    <div class="rating">⭐⭐⭐⭐⭐</div>
+    <div class="actions">
+    <button>Solicitar</button>
+    <span class="fav" onclick="toggleFav(this)">🤍</span>
+    </div>
+    </div>
+    
+    <div class="mentor" data-cat="ex" data-id="7">
     <img src="https://cdn-icons-png.flaticon.com/512/4140/4140039.png">
     <h3>Marcos Silva</h3>
     <p>Ex-aluno • Web Design</p>
-    <button>Solicitar mentoria</button>
-    </div> 
+    <div class="rating">⭐⭐⭐⭐</div>
+    <div class="actions">
+    <button>Solicitar</button>
+    <span class="fav" onclick="toggleFav(this)">🤍</span>
+    </div>
+    </div>
+    
+    <div class="mentor" data-cat="ex" data-id="8">
+    <img src="https://cdn-icons-png.flaticon.com/512/4140/4140065.png">
+    <h3>Juliana Carvalho</h3>
+    <p>Ex-aluna • Logística</p>
+    <div class="rating">⭐⭐⭐⭐⭐</div>
+    <div class="actions">
+    <button>Solicitar</button>
+    <span class="fav" onclick="toggleFav(this)">🤍</span>
+    </div>
+    </div>
+    
+    <div class="mentor" data-cat="ex" data-id="9">
+    <img src="https://cdn-icons-png.flaticon.com/512/4140/4140071.png">
+    <h3>Camila Santos</h3>
+    <p>Ex-aluna • Web Design</p>
+    <div class="rating">⭐⭐⭐⭐</div>
+    <div class="actions">
+    <button>Solicitar</button>
+    <span class="fav" onclick="toggleFav(this)">🤍</span>
+    </div>
+    </div>
+    
+    <div class="mentor" data-cat="prof2" data-id="10">
+    <img src="https://cdn-icons-png.flaticon.com/512/4140/4140068.png">
+    <h3>Diego Martins</h3>
+    <p>Profissional • Web Design</p>
+    <div class="rating">⭐⭐⭐⭐⭐</div>
+    <div class="actions">
+    <button>Solicitar</button>
+    <span class="fav" onclick="toggleFav(this)">🤍</span>
+    </div>
+    </div>
+    
+    <div class="mentor" data-cat="ex" data-id="11">
+    <img src="https://cdn-icons-png.flaticon.com/512/4140/4140056.png">
+    <h3>Paulo Henrique</h3>
+    <p>Ex-aluno • Logística</p>
+    <div class="rating">⭐⭐⭐⭐</div>
+    <div class="actions">
+    <button>Solicitar</button>
+    <span class="fav" onclick="toggleFav(this)">🤍</span>
+    </div>
+    </div>
+    
+    <div class="mentor" data-cat="ex" data-id="12">
+    <img src="https://cdn-icons-png.flaticon.com/512/4140/4140047.png">
+    <h3>Larissa Gomes</h3>
+    <p>Ex-aluna • Logística</p>
+    <div class="rating">⭐⭐⭐⭐⭐</div>
+    <div class="actions">
+    <button>Solicitar</button>
+    <span class="fav" onclick="toggleFav(this)">🤍</span>
+    </div>
+    </div>
+        
+    <div class="mentor" data-cat="prof" data-id="13">
+      <img src="https://cdn-icons-png.flaticon.com/512/4140/4140061.png">
+      <h3>Eduardo Mendes</h3>
+      <p>Professor • Logística</p>
+      <div class="rating">⭐⭐⭐⭐⭐</div>
+      <div class="actions">
+      <button>Solicitar</button>
+      <span class="fav" onclick="toggleFav(this)">🤍</span>
+      </div>
+      </div>
+      
+      <div class="mentor" data-cat="prof2" data-id="14">
+      <img src="https://cdn-icons-png.flaticon.com/512/4140/4140064.png">
+      <h3>Aline Batista</h3>
+      <p>Profissional • Logística</p>
+      <div class="rating">⭐⭐⭐⭐</div>
+      <div class="actions">
+      <button>Solicitar</button>
+      <span class="fav" onclick="toggleFav(this)">🤍</span>
+      </div>
+      </div>
+      
+      <div class="mentor" data-cat="ex" data-id="15">
+      <img src="https://cdn-icons-png.flaticon.com/512/4140/4140056.png">
+      <h3>Gabriel Souza</h3>
+      <p>Ex-aluno • Web Design</p>
+      <div class="rating">⭐⭐⭐⭐</div>
+      <div class="actions">
+      <button>Solicitar</button>
+      <span class="fav" onclick="toggleFav(this)">🤍</span>
+      </div>
+      </div>
+      
+      <div class="mentor" data-cat="prof" data-id="16">
+      <img src="https://cdn-icons-png.flaticon.com/512/4140/4140037.png">
+      <h3>Carla Fernandes</h3>
+      <p>Professora • UX/UI</p>
+      <div class="rating">⭐⭐⭐⭐⭐</div>
+      <div class="actions">
+      <button>Solicitar</button>
+      <span class="fav" onclick="toggleFav(this)">🤍</span>
+      </div>
+      </div>
+      
+      <div class="mentor" data-cat="prof2" data-id="17">
+      <img src="https://cdn-icons-png.flaticon.com/512/4140/4140068.png">
+      <h3>Leonardo Ribeiro</h3>
+      <p>Profissional • Front-end</p>
+      <div class="rating">⭐⭐⭐⭐⭐</div>
+      <div class="actions">
+      <button>Solicitar</button>
+      <span class="fav" onclick="toggleFav(this)">🤍</span>
+      </div>
+      </div>
+      
+      <div class="mentor" data-cat="ex" data-id="18">
+      <img src="https://cdn-icons-png.flaticon.com/512/4140/4140071.png">
+      <h3>Vanessa Costa</h3>
+      <p>Ex-aluna • Web Design</p>
+      <div class="rating">⭐⭐⭐⭐</div>
+      <div class="actions">
+      <button>Solicitar</button>
+      <span class="fav" onclick="toggleFav(this)">🤍</span>
+      </div>
+      </div>
+      
+      <div class="mentor" data-cat="prof" data-id="19">
+      <img src="https://cdn-icons-png.flaticon.com/512/4140/4140061.png">
+      <h3>Roberto Lima</h3>
+      <p>Professor • Programação</p>
+      <div class="rating">⭐⭐⭐⭐⭐</div>
+      <div class="actions">
+      <button>Solicitar</button>
+      <span class="fav" onclick="toggleFav(this)">🤍</span>
+      </div>
+      </div>
+      
+      <div class="mentor" data-cat="prof2" data-id="20">
+      <img src="https://cdn-icons-png.flaticon.com/512/4140/4140064.png">
+      <h3>Julio César</h3>
+      <p>Profissional • Back-end</p>
+      <div class="rating">⭐⭐⭐⭐</div>
+      <div class="actions">
+      <button>Solicitar</button>
+      <span class="fav" onclick="toggleFav(this)">🤍</span>
+      </div>
+      </div>
+      
+      <div class="mentor" data-cat="ex" data-id="21">
+      <img src="https://cdn-icons-png.flaticon.com/512/4140/4140047.png">
+      <h3>Natália Alves</h3>
+      <p>Ex-aluna • Logística</p>
+      <div class="rating">⭐⭐⭐⭐⭐</div>
+      <div class="actions">
+      <button>Solicitar</button>
+      <span class="fav" onclick="toggleFav(this)">🤍</span>
+      </div>
+      </div>
 
-    <div class="mentor">
-        <img src="https://cdn-icons-png.flaticon.com/512/4140/4140065.png">
-        <h3>Juliana Carvalho</h3>
-        <p>Ex-aluno •Logística</p>
-        <button>Solicitar mentoria</button>
+      <div class="mentor" data-cat="prof" data-id="23">
+        <img src="https://cdn-icons-png.flaticon.com/512/4140/4140061.png">
+        <h3>André Carvalho</h3>
+        <p>Professor • Logística</p>
+        <div class="rating">⭐⭐⭐⭐⭐</div>
+        <div class="actions">
+        <button>Solicitar</button>
+        <span class="fav" onclick="toggleFav(this)">🤍</span>
         </div>
+        </div>
+        
+        <div class="mentor" data-cat="prof2" data-id="24">
+        <img src="https://cdn-icons-png.flaticon.com/512/4140/4140064.png">
+        <h3>Renata Barbosa</h3>
+        <p>Profissional • Supply Chain</p>
+        <div class="rating">⭐⭐⭐⭐</div>
+        <div class="actions">
+        <button>Solicitar</button>
+        <span class="fav" onclick="toggleFav(this)">🤍</span>
+        </div>
+        </div>
+        
+        <div class="mentor" data-cat="prof" data-id="25">
+        <img src="https://cdn-icons-png.flaticon.com/512/4140/4140037.png">
+        <h3>Márcio Teixeira</h3>
+        <p>Professor • Programação</p>
+        <div class="rating">⭐⭐⭐⭐⭐</div>
+        <div class="actions">
+        <button>Solicitar</button>
+        <span class="fav" onclick="toggleFav(this)">🤍</span>
+        </div>
+        </div>
+        
+        <div class="mentor" data-cat="prof2" data-id="26">
+        <img src="https://cdn-icons-png.flaticon.com/512/4140/4140068.png">
+        <h3>Juliana Mendes</h3>
+        <p>Profissional • Front-end</p>
+        <div class="rating">⭐⭐⭐⭐⭐</div>
+        <div class="actions">
+        <button>Solicitar</button>
+        <span class="fav" onclick="toggleFav(this)">🤍</span>
+        </div>
+        </div>
+        
+        <div class="mentor" data-cat="prof" data-id="27">
+        <img src="https://cdn-icons-png.flaticon.com/512/4140/4140061.png">
+        <h3>Cláudia Ribeiro</h3>
+        <p>Professora • UX/UI</p>
+        <div class="rating">⭐⭐⭐⭐⭐</div>
+        <div class="actions">
+        <button>Solicitar</button>
+        <span class="fav" onclick="toggleFav(this)">🤍</span>
+        </div>
+        </div>
+        
+        <div class="mentor" data-cat="prof2" data-id="28">
+        <img src="https://cdn-icons-png.flaticon.com/512/4140/4140064.png">
+        <h3>Pedro Nascimento</h3>
+        <p>Profissional • Back-end</p>
+        <div class="rating">⭐⭐⭐⭐</div>
+        <div class="actions">
+        <button>Solicitar</button>
+        <span class="fav" onclick="toggleFav(this)">🤍</span>
+        </div>
+        </div>
+        
+        <div class="mentor" data-cat="prof" data-id="29">
+        <img src="https://cdn-icons-png.flaticon.com/512/4140/4140037.png">
+        <h3>Fernanda Dias</h3>
+        <p>Professora • Banco de Dados</p>
+        <div class="rating">⭐⭐⭐⭐⭐</div>
+        <div class="actions">
+        <button>Solicitar</button>
+        <span class="fav" onclick="toggleFav(this)">🤍</span>
+        </div>
+        </div>
+        
+        <div class="mentor" data-cat="prof2" data-id="30">
+        <img src="https://cdn-icons-png.flaticon.com/512/4140/4140068.png">
+        <h3>Ricardo Martins</h3>
+        <p>Profissional • DevOps</p>
+        <div class="rating">⭐⭐⭐⭐⭐</div>
+        <div class="actions">
+        <button>Solicitar</button>
+        <span class="fav" onclick="toggleFav(this)">🤍</span>
+        </div>
+        </div>
+        
+        <div class="mentor" data-cat="prof" data-id="31">
+        <img src="https://cdn-icons-png.flaticon.com/512/4140/4140061.png">
+        <h3>Patrícia Souza</h3>
+        <p>Professora • Redes</p>
+        <div class="rating">⭐⭐⭐⭐⭐</div>
+        <div class="actions">
+        <button>Solicitar</button>
+        <span class="fav" onclick="toggleFav(this)">🤍</span>
+        </div>
+        </div>
+        
+        <div class="mentor" data-cat="prof2" data-id="32">
+        <img src="https://cdn-icons-png.flaticon.com/512/4140/4140064.png">
+        <h3>Lucas Freitas</h3>
+        <p>Profissional • Segurança da Informação</p>
+        <div class="rating">⭐⭐⭐⭐</div>
+        <div class="actions">
+        <button>Solicitar</button>
+        <span class="fav" onclick="toggleFav(this)">🤍</span>
+        </div>
+        </div>
+      
+      <div class="mentor" data-cat="prof2" data-id="22">
+      <img src="https://cdn-icons-png.flaticon.com/512/4140/4140068.png">
+      <h3>Felipe Rocha</h3>
+      <p>Profissional • UX Design</p>
+      <div class="rating">⭐⭐⭐⭐⭐</div>
+      <div class="actions">
+      <button>Solicitar</button>
+      <span class="fav" onclick="toggleFav(this)">🤍</span>
+      </div>
+      </div>
 
 </div>
 
 </div>
 
 <footer>
-
-<p>StudyLink • Plataforma colaborativa de estudos</p>
-
+<p>StudyLink • Plataforma colaborativa</p>
 </footer>
 
 <script>
 
-let loginLink = document.getElementById("loginLink");
+/* LOGIN */
+if(localStorage.getItem("usuarioLogado")==="true"){
+document.getElementById("loginLink").textContent="Perfil";
+document.getElementById("loginLink").href="perfil.html";
+}
 
-if(localStorage.getItem("usuarioLogado") === "true"){
+/* BUSCA */
+const searchInput=document.getElementById("searchInput");
 
-loginLink.textContent = "Perfil";
-loginLink.href = "perfil.html";
+searchInput.addEventListener("input",()=>{
+let input=searchInput.value.toLowerCase();
 
+document.querySelectorAll(".mentor").forEach(m=>{
+let match=m.innerText.toLowerCase().includes(input);
+m.style.display=match?"":"none";
+});
+});
+
+/* FILTRO */
+function filtrar(cat,el){
+document.querySelectorAll(".mentor").forEach(m=>{
+let match=(cat==="all"||m.dataset.cat===cat);
+m.style.display=match?"":"none";
+});
+
+document.querySelectorAll(".category").forEach(c=>c.classList.remove("active"));
+el.classList.add("active");
+}
+
+// CARREGAR FAVORITOS
+let favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
+
+// MARCAR FAVORITOS AO CARREGAR
+document.querySelectorAll(".mentor").forEach(card=>{
+  let id = card.dataset.id;
+  let favIcon = card.querySelector(".fav");
+
+  if(favoritos.includes(id)){
+    favIcon.textContent = "⭐";
+    favIcon.classList.add("active");
+  }
+});
+
+// TOGGLE FAVORITO
+function toggleFav(el){
+  let card = el.closest(".mentor");
+  let id = card.dataset.id;
+
+  if(favoritos.includes(id)){
+    favoritos = favoritos.filter(f => f !== id);
+    el.textContent = "🤍";
+    el.classList.remove("active");
+  } else {
+    favoritos.push(id);
+    el.textContent = "❤️";
+    el.classList.add("active");
+  }
+
+  localStorage.setItem("favoritos", JSON.stringify(favoritos));
 }
 
 </script>
