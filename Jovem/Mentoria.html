@@ -335,13 +335,139 @@ footer {
     padding: 30px 15px;
   }
 }
+/* DARK MODE AUTOMÁTICO */
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #0f172a;
+    color: #e5e7eb;
+  }
+
+  header {
+    background: rgba(15, 23, 42, 0.7);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  nav a {
+    color: #cbd5f5;
+  }
+
+  nav a:hover {
+    color: #60a5fa;
+  }
+
+  .container {
+    color: #e5e7eb;
+  }
+
+  .search input {
+    background: #1e293b;
+    border: 1px solid #334155;
+    color: #e5e7eb;
+  }
+
+  .category {
+    background: #1e293b;
+    color: #cbd5f5;
+  }
+
+  .category.active,
+  .category:hover {
+    background: #3b82f6;
+  }
+
+  .mentor {
+    background: #1e293b;
+    box-shadow: none;
+  }
+
+  .mentor h3 {
+    color: #fff;
+  }
+
+  .mentor p {
+    color: #cbd5f5;
+  }
+
+  .chat-box {
+    background: #1e293b;
+    color: white;
+  }
+
+  .chat-messages {
+    border: 1px solid #334155;
+  }
+
+  footer {
+    background: #020617;
+  }
+}
+.mentor {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 0.6s ease;
+}
+
+.mentor.show {
+  opacity: 1;
+  transform: translateY(0);
+
+/* DARK MODE GLOBAL */
+body.dark {
+  background: #0f172a;
+  color: #e5e7eb;
+}
+
+body.dark header {
+  background: rgba(15, 23, 42, 0.7);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+body.dark nav a {
+  color: #cbd5f5;
+}
+
+body.dark nav a:hover {
+  color: #60a5fa;
+}
+
+body.dark .search input {
+  background: #1e293b;
+  border: 1px solid #334155;
+  color: #e5e7eb;
+}
+
+body.dark .category {
+  background: #1e293b;
+  color: #cbd5f5;
+}
+
+body.dark .category.active,
+body.dark .category:hover {
+  background: #3b82f6;
+}
+
+body.dark .mentor {
+  background: #1e293b;
+}
+
+body.dark .mentor p {
+  color: #cbd5f5;
+}
+
+body.dark footer {
+  background: #020617;
+}
+
+header, .mentor, .category, input {
+  transition: all 0.3s;
+}
     </style>
   </head>
 
   <body>
     <header>
       <div class="logo">StudyLink</div>
-
+    
       <nav>
         <a href="index.html">Início</a>
         <a href="forum.html">Fórum</a>
@@ -349,7 +475,7 @@ footer {
         <a href="mentoria.html">Mentoria</a>
         <a id="loginLink" href="login.html">Login</a>
       </nav>
-
+    
     </header>
 
     <div class="container">
@@ -797,7 +923,9 @@ footer {
   </footer>
   <script>
 
+    
     // BUSCA
+    
     document.getElementById("searchInput").addEventListener("input", function(){
       let val = this.value.toLowerCase();
       
@@ -806,7 +934,10 @@ footer {
       });
     });
     
+    
+    
     // FILTRO
+   
     function filtrar(cat, el){
       document.querySelectorAll(".mentor").forEach(m => {
         m.style.display = (cat === "all" || m.dataset.cat === cat) ? "" : "none";
@@ -816,13 +947,19 @@ footer {
       el.classList.add("active");
     }
     
+    
+   
     // FAVORITO
+
     function toggleFav(el){
       el.classList.toggle("active");
       el.textContent = el.classList.contains("active") ? "❤️" : "🤍";
     }
     
+    
+   
     // CHAT
+   
     function abrirChat(nome){
       document.getElementById("chatModal").style.display = "flex";
       document.getElementById("chatTitle").textContent = "Chat com " + nome;
@@ -843,7 +980,10 @@ footer {
       input.value = "";
     }
     
+    
+    
     // AGENDA
+   
     let mentorAgenda = "";
     
     function abrirAgenda(nome){
@@ -868,6 +1008,19 @@ footer {
       alert(`Mentoria com ${mentorAgenda} agendada para ${data} às ${hora}`);
       fecharAgenda();
     }
+    // ANIMAÇÃO SCROLL
+    
+    const cards = document.querySelectorAll(".mentor");
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+        }
+      });
+    }, { threshold: 0.2 });
+    
+    cards.forEach(card => observer.observe(card));
     
     </script>
 
