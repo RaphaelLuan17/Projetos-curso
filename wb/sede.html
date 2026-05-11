@@ -4,8 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- Favicon -->
-    <link rel="shortcut icon" href="img/cup.png" type="image/png" />
-
+    <link rel="icon" type="image/png" href="img/taça.png">
     <title>Web Na Copa - 2026</title>
 
     <link
@@ -56,65 +55,61 @@
         margin: 20px auto;
         text-align: left;
       }
-      body {
-  padding-top: 70px; /* evita ficar atrás da navbar */
+
+      /* NAV IGUAL AO OUTRO SITE */
+.navbar{
+background:white !important;
+box-shadow:0 2px 8px rgba(0,0,0,0.05);
 }
 
-.navbar-brand {
-  font-size: 1.5rem;
+.navbar-brand{
+color:#009c3b !important;
+font-weight:bold;
 }
 
-.nav-link:hover {
-  color: #198754 !important; /* verde no hover */
+.navbar-nav .nav-link{
+margin-left:25px;
+text-decoration:none;
+color:#444 !important;
+transition:0.3s;
 }
+
+.navbar-nav .nav-link:hover{
+color:#009c3b !important;
+}
+
+.navbar-nav .nav-link.active{
+color:#009c3b !important;
+}
+
     </style>
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-lg bg-light shadow-sm fixed-top">
-      <div class="container">
-    
-        <!-- LOGO -->
-        <a class="navbar-brand fw-bold text-success" href="#">
-          Web Na Copa
-        </a>
-    
-        <!-- BOTÃO MOBILE -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+    <nav class="navbar navbar-expand-md fixed-top"> 
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">Web Na Copa - 2026</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarCollapse"
+        >
           <span class="navbar-toggler-icon"></span>
         </button>
-    
-        <!-- MENU -->
-        <div class="collapse navbar-collapse justify-content-end" id="menu">
-          <ul class="navbar-nav gap-3">
-    
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav me-auto">
             <li class="nav-item">
-              <a class="nav-link text-dark" href="index.html">Home</a>
+              
             </li>
-    
-            <li class="nav-item">
-              <a class="nav-link text-dark" href="museu.html">Museu</a>
-            </li>
-    
-            <li class="nav-item">
-              <a class="nav-link text-dark" href="quiz.html">Quiz</a>
-            </li>
-    
-            <li class="nav-item">
-              <a class="nav-link text-dark" href="sede.html">Sede</a>
-            </li>
-    
-            <li class="nav-item">
-              <a class="nav-link text-dark" href="históriacopa.html">Brasil</a>
-            </li>
-    
-            <li class="nav-item">
-              <a class="nav-link text-dark" href="bastidores.html">Bastidores</a>
-            </li>
-    
-          </ul>
+            <li class="nav-item"><a class="nav-link" href="museu.html">Museu</a></li>
+            <li class="nav-item"><a class="nav-link" href="quiz.html">Quiz</a></li>
+            <li class="nav-item"><a class="nav-link" href="sede.html">Sede</a></li>
+            <li class="nav-item"><a class="nav-link" href="brasil.html">Brasil</a></li>
+            <li class="nav-item"><a class="nav-link" href="bastidores.html">Bastidores</a></li>
+            <li class="nav-item"><a class="nav-link" href="históriacopa.html">História da copa</a></li>
+          </ul> 
         </div>
-    
       </div>
     </nav>
 
@@ -214,7 +209,7 @@
           <h1 class="display-3">Filadélfia</h1>
           <div class="d-flex justify-content-center gap-3 flex-wrap mb-3">
             <img
-              src="img/fila.jpg"
+              src="img/fila2.jpg"
               style="width: 500px; height: 500px; object-fit: cover"
             />
             <img
@@ -398,8 +393,3 @@
         ride: "carousel",
       });
     </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-  </body>
-</html>
-```
