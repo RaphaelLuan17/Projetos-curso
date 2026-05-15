@@ -33,60 +33,126 @@ body {
 }
 
 /* NAVBAR */
-header {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px 8%;
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
-  border-bottom: 1px solid rgba(0,0,0,0.05);
+
+header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  width:100%;
+  padding:18px 8%;
+
+  background:rgba(15,23,42,0.75);
+
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+
+  border-bottom:1px solid rgba(255,255,255,0.05);
+
+  box-shadow:0 8px 25px rgba(0,0,0,0.25);
+
+  transition:0.3s ease;
 }
 
-.logo {
-  font-size: 22px;
-  font-weight: bold;
-  color: #2563eb;
+/* LOGO */
+
+.logo{
+  font-size:24px;
+  font-weight:700;
+  color:#2563eb;
+  letter-spacing:1px;
 }
 
-nav {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
+.logo span{
+  color:#1d4ed8;
 }
 
-nav a {
-  text-decoration: none;
-  color: #2563eb;
-  font-weight: 500;
-  position: relative;
-  padding: 5px 0;
-  transition: 0.3s;
+/* MENU */
+
+nav{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  align-items:center;
 }
 
-nav a::after {
-  content: "";
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 0%;
-  height: 2px;
-  background: #2563eb;
-  transition: 0.3s;
+nav a{
+  margin-left:25px;
+  text-decoration:none;
+  color:#2563eb;
+  font-weight:500;
+  position:relative;
+  transition:0.3s ease;
 }
 
-nav a:hover::after {
-  width: 100%;
+nav a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-5px;
+
+  width:0;
+  height:2px;
+
+  background:#2563eb;
+  transition:0.3s ease;
 }
 
-nav a:hover {
-  color: #2563eb;
+nav a:hover::after{
+  width:100%;
 }
+
+nav a:hover{
+  color:#1d4ed8;
+}
+
+/* BOTÃO TEMA */
+
+.theme-btn{
+  border:none;
+
+  background:linear-gradient(135deg,#2563eb,#1d4ed8);
+
+  color:white;
+  width:45px;
+  height:45px;
+
+  border-radius:50%;
+  font-size:20px;
+
+  cursor:pointer;
+  transition:0.3s;
+
+  box-shadow:0 5px 15px rgba(37,99,235,0.35);
+}
+
+.theme-btn:hover{
+  transform:scale(1.1);
+}
+
+/* DARK MODE */
+
+body.light header{
+  background:rgba(255,255,255,0.85);
+}
+
+body.light nav a{
+  color:#2563eb;
+}
+
+body.light nav a::after{
+  background:#2563eb;
+}
+
+body.light .logo{
+  color:#2563eb;
+}
+
+
 
 /* CONTAINER */
 .container {
@@ -265,7 +331,7 @@ nav a:hover {
   color: red;
 }
 
-/* RODAPÉ */
+/* RODAPÉ/Footer */
 
 .footer{
     margin-top:60px;
@@ -314,7 +380,6 @@ body.light .footer{
 body.light .footer p{
     color:#64748b;
 }
-
 /* CHAT */
 .chat-modal {
   position: fixed;
@@ -961,9 +1026,11 @@ header, .mentor, .category, input {
   </div>
 
   <footer class="footer">
-    <div class="footer-line"></div>
-    <p>Study Community ✦ Aprenda, compartilhe e evolua</p>
+  <div class="footer-line"></div>
+  <p>Study Community ✦ Aprenda, compartilhe e evolua</p>
 </footer>
+
+  <script>
 
     
     // BUSCA
