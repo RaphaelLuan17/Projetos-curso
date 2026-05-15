@@ -265,13 +265,54 @@ nav a:hover {
   color: red;
 }
 
-/* FOOTER */
-footer {
-  margin-top: 60px;
-  background: #111827;
-  color: #aaa;
-  text-align: center;
-  padding: 25px;
+/* RODAPÉ */
+
+.footer{
+    margin-top:60px;
+    padding:30px 0;
+    text-align:center;
+
+    background:rgba(255,255,255,0.04);
+
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+
+    border-top:1px solid rgba(255,255,255,0.05);
+
+    transition:0.3s;
+}
+
+.footer-line{
+    width:80%;
+    max-width:900px;
+    height:1px;
+
+    background:linear-gradient(
+      to right,
+      transparent,
+      #3b82f6,
+      transparent
+    );
+
+    margin:0 auto 20px;
+}
+
+.footer p{
+    color:#cbd5e1;
+    font-size:14px;
+    letter-spacing:1px;
+    transition:0.3s;
+}
+
+/* LIGHT MODE */
+
+body.light .footer{
+    background:#ffffff;
+    border-top:1px solid rgba(0,0,0,0.05);
+}
+
+body.light .footer p{
+    color:#64748b;
 }
 
 /* CHAT */
@@ -919,10 +960,10 @@ header, .mentor, .category, input {
     </div>
   </div>
 
-  <footer>
-    <p>StudyLink • Plataforma colaborativa</p>
-  </footer>
-  <script>
+  <footer class="footer">
+    <div class="footer-line"></div>
+    <p>Study Community ✦ Aprenda, compartilhe e evolua</p>
+</footer>
 
     
     // BUSCA
