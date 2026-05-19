@@ -28,7 +28,7 @@
 
 body {
   background: #f4f6fb;
-  color: #333;
+  color: #333333;
   line-height: 1.5;
 }
 
@@ -248,7 +248,7 @@ nav a:hover{
 }
 
 .mentor h3 {
-  color: #000;
+  color: #1d2bac;
   margin-bottom: 5px;
 }
 
@@ -349,6 +349,12 @@ body.light .footer{
     border-top:1px solid rgba(0,0,0,0.05);
 }
 
+@media (prefers-color-scheme: light) {
+  header {
+    background: rgba(255,255,255,0.85);
+  }
+}
+
 body.light .footer p{
     color:#64748b;
 }
@@ -413,135 +419,71 @@ body.light .footer p{
     padding: 30px 15px;
   }
 }
-/* DARK MODE AUTOMÁTICO */
-@media (prefers-color-scheme: dark) {
-  body {
-    background: #0f172a;
-    color: #e5e7eb;
-  }
+/* =========================
+   DARK MODE AUTOMÁTICO
+========================= */
 
-  header {
-    background: rgba(15, 23, 42, 0.7);
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-  }
+@media (prefers-color-scheme: dark){
 
-  nav a {
-    color: #cbd5f5;
-  }
-
-  nav a:hover {
-    color: #60a5fa;
-  }
-
-  .container {
-    color: #e5e7eb;
-  }
-
-  .search input {
-    background: #1e293b;
-    border: 1px solid #334155;
-    color: #e5e7eb;
-  }
-
-  .category {
-    background: #1e293b;
-    color: #cbd5f5;
-  }
-
-  .category.active,
-  .category:hover {
-    background: #3b82f6;
-  }
-
-  .mentor {
-    background: #1e293b;
-    box-shadow: none;
-  }
-
-  .mentor h3 {
-    color: #fff;
-  }
-
-  .mentor p {
-    color: #cbd5f5;
-  }
-
-  .chat-box {
-    background: #1e293b;
-    color: white;
-  }
-
-  .chat-messages {
-    border: 1px solid #334155;
-  }
-
-  footer {
-    background: #020617;
-  }
-}
-.mentor {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: 0.6s ease;
+body{
+  background:#0f172a;
+  color:#e5e7eb;
 }
 
-.mentor.show {
-  opacity: 1;
-  transform: translateY(0);
-
-/* DARK MODE GLOBAL */
-body.dark {
-  background: #0f172a;
-  color: #e5e7eb;
-}
-
-body.dark header {
-  background: rgba(15, 23, 42, 0.7);
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-}
-
-nav a {
-  color: #60a5fa;
-}
-
-body.dark nav a:hover {
-  color: #60a5fa;
-}
-
-body.dark .search input {
-  background: #1e293b;
-  border: 1px solid #334155;
-  color: #e5e7eb;
-}
-
-body.dark .category {
-  background: #1e293b;
-  color: #cbd5f5;
-}
-
-body.dark .category.active,
-body.dark .category:hover {
-  background: #3b82f6;
-}
-
-body.dark .mentor {
-  background: #1e293b;
-}
-
-body.dark .mentor p {
-  color: #cbd5f5;
-}
-
-body.dark footer {
-  background: #020617;
-}
-
-header, .mentor, .category, input {
-  transition: all 0.3s;
+header{
+  background:rgba(15,23,42,0.7);
 }
 
 nav a{
-  color:#2563eb !important;
+  color:#60a5fa;
+}
+
+.search input{
+  background:#1e293b;
+  border:1px solid #334155;
+  color:white;
+}
+
+.category{
+  background:#1e293b;
+  color:#cbd5e1;
+}
+
+.mentor{
+  background:#1e293b;
+}
+}
+
+/* =========================
+ LIGHT MODE AUTOMÁTICO
+========================= */
+
+@media (prefers-color-scheme: light){
+body{
+  background:#f4f6fb;
+  color:#111;
+}
+
+header{
+  background:rgba(255,255,255,0.9);
+}
+}
+
+/* =========================
+ DARK MODE MANUAL
+========================= */
+
+body.dark{
+background:#0f172a;
+color:#e5e7eb;
+}
+
+body.dark header{
+background:rgba(0, 0, 0, 0.7);
+}
+
+body.dark nav a{
+color:#000000;
 }
     </style>
   </head>
@@ -562,8 +504,8 @@ nav a{
     </header>
 
     <div class="container">
-      <h1>Mentoria com Ex-Alunos</h1>
-      <p>Conecte-se com estudantes que já passaram pelo mesmo caminho.</p>
+      <h1>Mentoria</h1>
+      <p>Conecte-se com Professor e Profissionais da Àrea.</p>
 
       <div class="become-mentor">
         <button>Torne-se um mentor</button>
@@ -575,7 +517,6 @@ nav a{
 
       <div class="categories">
         <span class="category active" onclick="filtrar('all',this)">Todos</span>
-        <span class="category" onclick="filtrar('ex',this)">Ex-Alunos</span>
         <span class="category" onclick="filtrar('prof',this)">Professores</span>
         <span class="category" onclick="filtrar('prof2',this)"
           >Profissionais da Àrea</span
@@ -583,10 +524,10 @@ nav a{
       </div>
       
       <div class="mentors">
-        <div class="mentor" data-cat="ex" data-id="1">
+        <div class="mentor" data-cat="prof2" data-id="1">
           <img src="https://cdn-icons-png.flaticon.com/512/4140/4140047.png" />
           <h3>Ana Silva</h3>
-          <p>Ex-aluna • Web Design</p>
+          <p>Profissional • Web Design</p>
           <div class="rating">⭐⭐⭐⭐⭐</div>
           <div class="actions">
             <button onclick="abrirChat('Mentoria')">Chat</button>
@@ -595,10 +536,10 @@ nav a{
           </div>
         </div>
 
-        <div class="mentor" data-cat="ex" data-id="2">
+        <div class="mentor" data-cat="prof2" data-id="2">
           <img src="https://cdn-icons-png.flaticon.com/512/4140/4140052.png" />
           <h3>Lucas Pereira</h3>
-          <p>Ex-aluno • Logística</p>
+          <p>Profissional • Logística</p>
           <div class="rating">⭐⭐⭐⭐⭐</div>
           <div class="actions">
             <button onclick="abrirChat('Mentoria')">Chat</button>
@@ -655,10 +596,10 @@ nav a{
           </div>
         </div>
 
-        <div class="mentor" data-cat="ex" data-id="7">
+        <div class="mentor" data-cat="prof" data-id="7">
           <img src="https://cdn-icons-png.flaticon.com/512/4140/4140039.png" />
           <h3>Marcos Silva</h3>
-          <p>Ex-aluno • Web Design</p>
+          <p>Professor • Web Design</p>
           <div class="rating">⭐⭐⭐⭐⭐</div>
           <div class="actions">
             <button onclick="abrirChat('Mentoria')">Chat</button>
@@ -667,10 +608,10 @@ nav a{
           </div>
         </div>
 
-        <div class="mentor" data-cat="ex" data-id="8">
+        <div class="mentor" data-cat="prof" data-id="8">
           <img src="https://cdn-icons-png.flaticon.com/512/4140/4140065.png" />
           <h3>Juliana Carvalho</h3>
-          <p>Ex-aluna • Logística</p>
+          <p>Professora • Logística</p>
           <div class="rating">⭐⭐⭐⭐⭐</div>
           <div class="actions">
             <button onclick="abrirChat('Mentoria')">Chat</button>
@@ -679,10 +620,10 @@ nav a{
           </div>
         </div>
 
-        <div class="mentor" data-cat="ex" data-id="9">
+        <div class="mentor" data-cat="prof" data-id="9">
           <img src="https://cdn-icons-png.flaticon.com/512/4140/4140071.png" />
           <h3>Camila Santos</h3>
-          <p>Ex-aluna • Web Design</p>
+          <p>Professora • Web Design</p>
           <div class="rating">⭐⭐⭐⭐⭐</div>
           <div class="actions">
             <button onclick="abrirChat('Mentoria')">Chat</button>
@@ -703,10 +644,10 @@ nav a{
           </div>
         </div>
 
-        <div class="mentor" data-cat="ex" data-id="11">
+        <div class="mentor" data-cat="prof2" data-id="11">
           <img src="https://cdn-icons-png.flaticon.com/512/4140/4140056.png" />
           <h3>Paulo Henrique</h3>
-          <p>Ex-aluno • Logística</p>
+          <p>Profissional • Logística</p>
           <div class="rating">⭐⭐⭐⭐⭐</div>
           <div class="actions">
             <button onclick="abrirChat('Mentoria')">Chat</button>
@@ -715,10 +656,10 @@ nav a{
           </div>
         </div>
 
-        <div class="mentor" data-cat="ex" data-id="12">
+        <div class="mentor" data-cat="prof2" data-id="12">
           <img src="https://cdn-icons-png.flaticon.com/512/4140/4140047.png" />
           <h3>Larissa Gomes</h3>
-          <p>Ex-aluna • Logística</p>
+          <p>Profissional • Logística</p>
           <div class="rating">⭐⭐⭐⭐</div>
           <div class="actions">
             <button onclick="abrirChat('Mentoria')">Chat</button>
@@ -751,10 +692,10 @@ nav a{
           </div>
         </div>
 
-        <div class="mentor" data-cat="ex" data-id="15">
+        <div class="mentor" data-cat="prof" data-id="15">
           <img src="https://cdn-icons-png.flaticon.com/512/4140/4140056.png" />
           <h3>Gabriel Souza</h3>
-          <p>Ex-aluno • Web Design</p>
+          <p>Professor • Web Design</p>
           <div class="rating">⭐⭐⭐⭐⭐</div>
           <div class="actions">
             <button onclick="abrirChat('Mentoria')">Chat</button>
@@ -787,10 +728,10 @@ nav a{
           </div>
         </div>
 
-        <div class="mentor" data-cat="ex" data-id="18">
+        <div class="mentor" data-cat="prof" data-id="18">
           <img src="https://cdn-icons-png.flaticon.com/512/4140/4140071.png" />
           <h3>Vanessa Costa</h3>
-          <p>Ex-aluna • Web Design</p>
+          <p>Professora • Web Design</p>
           <div class="rating">⭐⭐⭐⭐⭐</div>
           <div class="actions">
             <button onclick="abrirChat('Mentoria')">Chat</button>
@@ -823,10 +764,10 @@ nav a{
           </div>
         </div>
 
-        <div class="mentor" data-cat="ex" data-id="21">
+        <div class="mentor" data-cat="prof2" data-id="21">
           <img src="https://cdn-icons-png.flaticon.com/512/4140/4140047.png" />
           <h3>Natália Alves</h3>
-          <p>Ex-aluna • Logística</p>
+          <p>Profissional • Logística</p>
           <div class="rating">⭐⭐⭐⭐⭐</div>
           <div class="actions">
             <button onclick="abrirChat('Mentoria')">Chat</button>

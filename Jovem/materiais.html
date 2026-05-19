@@ -296,6 +296,12 @@ body.light .footer{
     border-top:1px solid rgba(0,0,0,0.05);
 }
 
+@media (prefers-color-scheme: light) {
+  header {
+    background: rgba(255,255,255,0.85);
+  }
+}
+
 body.light .footer p{
     color:#64748b;
 }
@@ -328,13 +334,8 @@ flex-direction:column;
     background: rgba(15, 23, 42, 0.7);
     border-bottom: 1px solid rgba(255,255,255,0.05);
   }
-
-  nav a {
-    color: #cbd5f5;
-  }
-
   nav a:hover {
-    color: #60a5fa;
+    color: #3486eb;
   }
 
   .container {
@@ -392,60 +393,68 @@ flex-direction:column;
 .mentor.show {
   opacity: 1;
   transform: translateY(0);
-
-/* DARK MODE GLOBAL */
-body.dark {
-  background: #0f172a;
-  color: #e5e7eb;
 }
 
-body.dark header {
-  background: rgba(15, 23, 42, 0.7);
-  border-bottom: 1px solid rgba(255,255,255,0.05);
+/* =========================
+   DARK / LIGHT SYSTEM (PC)
+========================= */
+
+/* DARK SYSTEM */
+@media (prefers-color-scheme: dark){
+  body{
+    background:#0f172a;
+    color:#e5e7eb;
+  }
+
+  header{
+    background:rgba(15,23,42,0.75);
+  }
+
+  nav a{
+    color:#2563eb;
+  }
+
+  nav a::after{
+    background:#2563eb;
+  }
+
+  nav a:hover{
+    color:#1d4ed8;
+  }
+
+  nav{
+    background:transparent;
+  }
 }
 
-nav a {
-  color: #60a5fa;
-}
+/* LIGHT SYSTEM */
+@media (prefers-color-scheme: light){
+  body{
+    background:#f8fafc;
+    color:#0f172a;
+  }
 
-body.dark nav a:hover {
-  color: #60a5fa;
-}
+  header{
+    background:rgba(255,255,255,0.85);
+    border-bottom:1px solid rgba(0,0,0,0.05);
+  }
 
-body.dark .search input {
-  background: #1e293b;
-  border: 1px solid #334155;
-  color: #e5e7eb;
-}
+  .card-avaliacao{
+    background:#ffffff;
+    border:none;
+  }
 
-body.dark .category {
-  background: #1e293b;
-  color: #cbd5f5;
-}
+  .topo p{
+    color:#475569;
+  }
 
-body.dark .category.active,
-body.dark .category:hover {
-  background: #3b82f6;
-}
+  .media-box{
+    background:#f1f5f9;
+  }
 
-body.dark .mentor {
-  background: #1e293b;
-}
-
-body.dark .mentor p {
-  color: #cbd5f5;
-}
-
-body.dark footer {
-  background: #020617;
-}
-
-header, .mentor, .category, input {
-  transition: all 0.3s;
-}
-
-nav a{
-  color:#2563eb !important;
+  footer{
+    color:#475569;
+  }
 }
 
 </style>
