@@ -1,0 +1,104 @@
+/* LOCAL STORAGE */
+
+function salvarNota(nota){
+
+  let notas =
+    JSON.parse(localStorage.getItem("notas")) || [];
+
+  notas.push(nota);
+
+  localStorage.setItem(
+    "notas",
+    JSON.stringify(notas)
+  );
+
+  atualizarMedia();
+
+}
+
+function atualizarMedia(){
+
+  let notas =
+    JSON.parse(localStorage.getItem("notas")) || [];
+
+  if(notas.length === 0) return;
+
+  let media =
+    notas.reduce((a,b)=>a+b,0) / notas.length;
+
+  document.getElementById("media")
+  .innerText = media.toFixed(1);
+
+} 
+
+/* AVALIAÇÃO */
+
+let notaAtual = 0;
+
+function avaliar(nota){
+
+  notaAtual = nota;
+
+  document.querySelectorAll(".stars span")
+  .forEach((s, i) => {
+
+    s.classList.toggle("active", i < nota);
+
+  });
+
+  const msg = document.getElementById("juizMsg");
+  const icon = document.getElementById("juizIcon");
+
+  if(nota <= 2){
+
+    msg.innerText = "Sentimos muito pela experiência 😢";
+    icon.innerText = "😔";
+
+  }
+
+  else if(nota === 3){
+
+    msg.innerText = "Obrigado pela avaliação 🙂";
+    icon.innerText = "😊";
+
+  }
+
+  else{
+
+    msg.innerText = "Excelente! Ficamos felizes 😍";
+    icon.innerText = "🚀";
+
+  }
+
+}
+
+/* ESTRELAS */
+.stars{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  margin-bottom:35px;
+}
+
+.stars span{
+  font-size:55px;
+  cursor:pointer;
+  color:#475569;
+  transition:0.3s;
+}
+
+.stars span:hover{
+  transform:translateY(-8px) scale(1.1);
+}
+
+.stars span.active{
+  color:#facc15;
+  text-shadow:0 0 15px rgba(250,204,21,0.8);
+}
+
+
+<div>
+        ⭐ <span id="media">0.0</span>
+      </div>
+
+

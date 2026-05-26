@@ -263,8 +263,8 @@ nav a:hover{
   background: linear-gradient(135deg, #2563eb, #1e40af);
   color: white;
   border: none;
-  padding: 10px 25px;
-  border-radius: 12px;
+  padding: 10px 36px;
+  border-radius: 15px;
   cursor: pointer;
   font-weight: 600;
   transition: 0.3s;
@@ -485,6 +485,44 @@ background:rgba(0, 0, 0, 0.7);
 body.dark nav a{
 color:#000000;
 }
+
+/* =========================
+   BOTÕES PROFESSOR
+========================= */
+
+.prof-actions {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+  padding-top: 12px;
+}
+
+.prof-actions button {
+  flex: 1;
+  width:10px;
+  height:50px;
+  border: none;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.prof-actions button:first-child {
+  background: linear-gradient(135deg, #f59e0b, #f97316);
+  color: white;
+}
+
+.prof-actions button:last-child {
+  background: linear-gradient(135deg, #04b40d, #04b40d);
+  color: white;
+}
+
+.prof-actions button:hover {
+  transform: translateY(-2px);
+}
+
     </style>
   </head>
 
@@ -503,11 +541,17 @@ color:#000000;
     
     </header>
 
+     <!--temporário-->
+<div class="perfil-switch">
+  <button onclick="trocarPerfil()">Trocar perfil</button>
+  <span id="perfilAtual"></span>
+</div>
+
     <div class="container">
       <h1>Mentoria</h1>
       <p>Conecte-se com Professor e Profissionais da Àrea.</p>
 
-      <div class="become-mentor">
+      <div class="prof-actions">
         <button>Torne-se um mentor</button>
       </div>
 
@@ -1048,7 +1092,105 @@ color:#000000;
     
     cards.forEach(card => observer.observe(card));
     
-    </script>
+   
+
+/* =========================
+   PERFIL + MENU DINÂMICO
+========================= */
+
+function getPerfil() {
+  return localStorage.getItem("perfil") || "aluno";
+}
+
+const loginLink = document.getElementById("loginLink");
+
+// atualiza link de login
+if (loginLink) {
+  loginLink.textContent = "Perfil";
+  loginLink.href = "perfil.html";
+}
+
+/* menu base */
+const menuBase = [
+  { nome: "Início", link: "index.html" },
+  { nome: "Fórum", link: "forum.html" },
+  { nome: "Matérias", link: "materiais.html" },
+];
+
+/* itens extras por perfil */
+const menuAluno = [
+  { nome: "Mentoria", link: "mentoria.html" },
+  { nome: "Missão", link: "missao.html" },
+];
+
+const menuProfessor = [
+  { nome: "Turmas", link: "turmas.html" },
+];
+
+const nav = document.querySelector("nav");
+
+function renderMenu() {
+  if (!nav) return;
+
+  let menuFinal = [...menuBase];
+
+  if (getPerfil() === "professor") {
+    menuFinal = menuFinal.concat(menuProfessor);
+  } else {
+    menuFinal = menuFinal.concat(menuAluno);
+  }
+
+  menuFinal.push({ nome: "Perfil", link: "perfil.html" });
+
+  nav.innerHTML = menuFinal
+    .map(item => `<a href="${item.link}">${item.nome}</a>`)
+    .join("");
+}
+
+renderMenu();
+
+/* =========================
+   PERFIL
+========================= */
+
+function atualizarTextoPerfil() {
+  const perfil = getPerfil();
+  const label = document.getElementById("perfilAtual");
+
+  if (label) {
+    label.textContent = "Perfil atual: " + perfil.toUpperCase();
+  }
+}
+
+function trocarPerfil() {
+  let perfilAtual = getPerfil();
+
+  perfilAtual = perfilAtual === "aluno" ? "professor" : "aluno";
+
+  localStorage.setItem("perfil", perfilAtual);
+
+  atualizarTextoPerfil();
+  location.reload();
+}
+
+atualizarTextoPerfil();
+
+
+/* =========================
+   CONTROLE DE BOTÕES PROFESSOR
+========================= */
+
+function controlarBotoesProfessor() {
+  const perfil = getPerfil();
+
+  document.querySelectorAll(".prof-actions").forEach(el => {
+    el.style.display = (perfil === "professor") ? "flex" : "none";
+  });
+}
+
+controlarBotoesProfessor();
+
+</script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
   </body>
