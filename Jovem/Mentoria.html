@@ -198,7 +198,7 @@ nav a:hover{
 /* GRID */
 .mentors {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 25px;
 }
 
@@ -279,13 +279,6 @@ nav a:hover{
   transform: scale(0.96);
 }
 
-/* RATING */
-.rating {
-  margin: 10px 0;
-  font-size: 18px;
-  color: #fbbf24;
-}
-
 /* FAVORITO */
 .actions {
   display: flex;
@@ -299,8 +292,31 @@ nav a:hover{
   transition: 0.3s;
 }
 
-.fav.active {
-  color: red;
+/* ESTRELAS */
+.stars{
+  display:flex;
+  justify-content:center;
+  gap:6px;
+  margin-bottom:10px;
+}
+
+.stars span{
+  font-size:34px;
+  cursor:pointer;
+  color:#94a3b8;
+  transition:0.25s ease;
+  filter: drop-shadow(0 0 0 transparent);
+}
+
+.stars span:hover{
+  transform:scale(1.25) rotate(-5deg);
+  color:#facc15;
+}
+
+.stars span.active{
+  color:#facc15;
+  transform:translateY(-4px) scale(1.15);
+  text-shadow:0 0 10px rgba(250,204,21,.8);
 }
 
 /* RODAPÉ/Footer */
@@ -358,52 +374,247 @@ body.light .footer{
 body.light .footer p{
     color:#64748b;
 }
-/* CHAT */
-.chat-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.5);
-  display: none;
-  justify-content: center;
-  align-items: center;
+/* MODAL CHAT */
+.chat-modal{
+  position:fixed;
+  top:0;
+  left:0;
+
+  width:100%;
+  height:100vh;
+
+  display:none;
+  justify-content:center;
+  align-items:center;
+
+  background:rgba(0,0,0,.65);
+  backdrop-filter:blur(10px);
+
+  z-index:9999;
+  animation:fade .3s ease;
 }
 
-.chat-box {
-  background: white;
-  width: 350px;
-  max-width: 90%;
-  padding: 20px;
-  border-radius: 12px;
+/* CAIXA */
+.chat-box{
+  width:420px;
+  max-width:92%;
+
+  background:rgba(255,255,255,0.92);
+  backdrop-filter:blur(18px);
+
+  border-radius:22px;
+  padding:22px;
+
+  box-shadow:0 25px 60px rgba(0,0,0,.35);
+  border:1px solid rgba(255,255,255,.4);
 }
 
-.chat-messages {
-  height: 200px;
-  overflow-y: auto;
-  border: 1px solid #ddd;
-  margin: 10px 0;
-  padding: 10px;
-  border-radius: 8px;
+.msg{
+  max-width:75%;
+  padding:10px 14px;
+  border-radius:14px;
+  font-size:14px;
+  line-height:1.4;
 }
 
-.chat-input {
-  display: flex;
-  gap: 5px;
+.msg.user{
+  background:#2563eb;
+  color:#fff;
+  align-self:flex-end;
 }
 
-.chat-input input {
-  flex: 1;
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid #ddd;
+.msg.bot{
+  background:#e2e8f0;
+  color:#0f172a;
 }
 
-.close {
-  margin-top: 10px;
+/* TÍTULO */
+.chat-box h2{
+  text-align:center;
+  margin-bottom:18px;
+
+  color:#2563eb;
+  font-size:24px;
+  font-weight:700;
+
+  letter-spacing:.5px;
 }
 
+/* MENSAGENS */
+.chat-messages{
+  height:300px;
+  overflow-y:auto;
+
+  padding:15px;
+
+  border-radius:18px;
+
+  background:#f8fafc;
+  border:1px solid #e2e8f0;
+
+  margin-bottom:15px;
+
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+
+  scroll-behavior:smooth;
+}
+
+/* Scroll personalizada */
+.chat-messages::-webkit-scrollbar{
+  width:6px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb{
+  background:#cbd5e1;
+  border-radius:20px;
+}
+
+/* BOLHAS */
+.msg{
+  max-width:80%;
+  padding:12px 16px;
+
+  border-radius:18px;
+
+  font-size:14px;
+  line-height:1.5;
+
+  animation:fade .3s ease;
+
+  box-shadow:
+  0 4px 10px rgba(0,0,0,.08);
+}
+
+.msg.user{
+  align-self:flex-end;
+
+  background:linear-gradient(
+  135deg,
+  #2563eb,
+  #3b82f6
+  );
+
+  color:white;
+}
+
+.msg.bot{
+  align-self:flex-start;
+
+  background:white;
+  color:#0f172a;
+}
+
+/* INPUT */
+.chat-input{
+  display:flex;
+  gap:10px;
+}
+
+.chat-input input{
+  flex:1;
+
+  padding:12px 14px;
+
+  border:none;
+  outline:none;
+
+  border-radius:12px;
+  border:1px solid #d1d5db;
+
+  transition:.3s;
+}
+
+.chat-input input:focus{
+  border-color:#2563eb;
+
+  box-shadow:
+  0 0 0 4px rgba(37,99,235,.15);
+}
+
+/* BOTÃO ENVIAR */
+.chat-input button{
+  border:none;
+
+  padding:12px 18px;
+
+  background:linear-gradient(
+  135deg,
+  #2563eb,
+  #3b82f6
+  );
+
+  color:white;
+
+  border-radius:12px;
+  cursor:pointer;
+
+  font-weight:600;
+
+  transition:.3s;
+}
+
+.chat-input button:hover{
+  transform:translateY(-3px);
+
+  box-shadow:
+  0 10px 20px rgba(37,99,235,.3);
+}
+
+/* BOTÃO FECHAR */
+.close{
+  width:100%;
+  margin-top:15px;
+
+  padding:12px;
+
+  border:none;
+  border-radius:12px;
+
+  background:linear-gradient(
+  135deg,
+  #ef4444,
+  #dc2626
+  );
+
+  color:white;
+
+  font-weight:600;
+
+  cursor:pointer;
+  transition:.3s;
+}
+
+.close:hover{
+  transform:translateY(-2px);
+
+  box-shadow:
+  0 10px 20px rgba(239,68,68,.3);
+}
+
+/* ANIMAÇÕES */
+@keyframes fade{
+  from{
+    opacity:0;
+  }
+
+  to{
+    opacity:1;
+  }
+}
+
+@keyframes slide{
+  from{
+    transform:translateY(30px) scale(.95);
+    opacity:0;
+  }
+
+  to{
+    transform:translateY(0) scale(1);
+    opacity:1;
+  }
+}
 /* RESPONSIVO */
 @media (max-width: 768px) {
   header {
@@ -523,6 +734,114 @@ color:#000000;
   transform: translateY(-2px);
 }
 
+/* MÉDIA */
+.media-box{
+  margin-top:35px;
+  padding:20px;
+  border-radius:18px;
+  background:rgba(255,255,255,0.05);
+}
+
+#media{
+  color:#facc15;
+  font-size:28px;
+  font-weight:700;
+}
+
+
+.mentor{
+opacity:0;
+transform:translateY(40px);
+transition:.6s;
+}
+
+.mentor.show{
+opacity:1;
+transform:translateY(0);
+}
+
+/* ESTRELAS ANIMADAS */
+
+.stars{
+ display:flex;
+ justify-content:center;
+ gap:10px;
+ margin-bottom:10px;
+}
+
+.stars span{
+ font-size:38px;
+ cursor:pointer;
+ color:#475569;
+ transition:all .3s ease;
+}
+
+.stars span:hover{
+ transform:scale(1.3);
+}
+
+.stars span.active{
+ color:#facc15;
+ transform:translateY(-8px) scale(1.2);
+ text-shadow:
+ 0 0 10px rgba(250,204,21,.8),
+ 0 0 25px rgba(250,204,21,.6);
+}
+
+.nota-texto{
+ margin-top:10px;
+ font-size:14px;
+ font-weight:600;
+ transition:.3s;
+}
+/* EFEITO ESTRELAS */
+
+.stars span{
+    font-size:38px;
+    cursor:pointer;
+    color:#64748b;
+    transition:.4s;
+}
+
+.stars span.active{
+    color:#facc15;
+    text-shadow:
+    0 0 10px rgba(250,204,21,.8),
+    0 0 20px rgba(250,204,21,.7),
+    0 0 30px rgba(250,204,21,.6);
+
+    transform:translateY(-8px);
+}
+
+.stars span.hover {
+  color: #facc15;
+  transform: scale(1.2);
+  text-shadow: 0 0 10px rgba(250,204,21,.6);
+}
+
+/* AGENDA */
+
+#agendaModal .chat-box{
+  background:rgba(255,255,255,0.95);
+  border-radius:20px;
+  padding:25px;
+}
+
+#agendaModal input{
+  width:100%;
+  margin:8px 0;
+  padding:12px;
+  border-radius:10px;
+  border:1px solid #cbd5e1;
+  outline:none;
+}
+
+#agendaModal input:focus{
+  border-color:#2563eb;
+  box-shadow:0 0 0 3px rgba(37,99,235,.15);
+}
+
+
     </style>
   </head>
 
@@ -549,11 +868,11 @@ color:#000000;
 
     <div class="container">
       <h1>Mentoria</h1>
-      <p>Conecte-se com Professor e Profissionais da Àrea.</p>
+      <p>Conecte-se com professores e profissionais da área.</p>
 
       <div class="prof-actions">
         <button>Torne-se um mentor</button>
-      </div>
+     </div>
 
       <div class="search">
         <input type="text" id="searchInput" placeholder="Pesquisar mentor..." />
@@ -572,10 +891,19 @@ color:#000000;
           <img src="https://cdn-icons-png.flaticon.com/512/4140/4140047.png" />
           <h3>Ana Silva</h3>
           <p>Profissional • Web Design</p>
-          <div class="rating">⭐⭐⭐⭐⭐</div>
+          <div class="stars">
+            <span onclick="avaliar(this,1)">★</span>
+            <span onclick="avaliar(this,2)">★</span>
+            <span onclick="avaliar(this,3)">★</span>
+            <span onclick="avaliar(this,4)">★</span>
+            <span onclick="avaliar(this,5)">★</span>
+          </div>
+          <div><h1><span class="media">0.0</span></h1></div>
           <div class="actions">
-            <button onclick="abrirChat('Mentoria')">Chat</button>
-            <button onclick="abrirAgenda()">Agendar</button>
+            <button onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
+              Chat
+           </button>
+            <button onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">Agendar</button>
             <span class="fav" onclick="toggleFav(this)">🤍</span>
           </div>
         </div>
@@ -584,10 +912,19 @@ color:#000000;
           <img src="https://cdn-icons-png.flaticon.com/512/4140/4140052.png" />
           <h3>Lucas Pereira</h3>
           <p>Profissional • Logística</p>
-          <div class="rating">⭐⭐⭐⭐⭐</div>
+          <div class="stars">
+            <span onclick="avaliar(this,1)">★</span>
+            <span onclick="avaliar(this,2)">★</span>
+            <span onclick="avaliar(this,3)">★</span>
+            <span onclick="avaliar(this,4)">★</span>
+            <span onclick="avaliar(this,5)">★</span>
+          </div>
+          <div><h1><span class="media">0.0</span></h1></div>
           <div class="actions">
-            <button onclick="abrirChat('Mentoria')">Chat</button>
-            <button onclick="abrirAgenda()">Agendar</button>
+            <button onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
+              Chat
+           </button>
+            <button onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">Agendar</button>
             <span class="fav" onclick="toggleFav(this)">🤍</span>
           </div>
         </div>
@@ -596,10 +933,19 @@ color:#000000;
           <img src="https://cdn-icons-png.flaticon.com/512/4140/4140068.png" />
           <h3>Bruno Almeida</h3>
           <p>Profissional • Web Design</p>
-          <div class="rating">⭐⭐⭐⭐⭐</div>
+          <div class="stars">
+            <span onclick="avaliar(this,1)">★</span>
+            <span onclick="avaliar(this,2)">★</span>
+            <span onclick="avaliar(this,3)">★</span>
+            <span onclick="avaliar(this,4)">★</span>
+            <span onclick="avaliar(this,5)">★</span>
+          </div>
+          <div><h1><span class="media">0.0</span></h1></div>
           <div class="actions">
-            <button onclick="abrirChat('Mentoria')">Chat</button>
-            <button onclick="abrirAgenda()">Agendar</button>
+            <button onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
+              Chat
+           </button>
+            <button onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">Agendar</button>
             <span class="fav" onclick="toggleFav(this)">🤍</span>
           </div>
         </div>
@@ -608,10 +954,19 @@ color:#000000;
           <img src="https://cdn-icons-png.flaticon.com/512/4140/4140061.png" />
           <h3>Mariana Costa</h3>
           <p>Professora • Web Design</p>
-          <div class="rating">⭐⭐⭐⭐⭐</div>
+          <div class="stars">
+            <span onclick="avaliar(this,1)">★</span>
+            <span onclick="avaliar(this,2)">★</span>
+            <span onclick="avaliar(this,3)">★</span>
+            <span onclick="avaliar(this,4)">★</span>
+            <span onclick="avaliar(this,5)">★</span>
+          </div>
+          <div><h1><span class="media">0.0</span></h1></div>
           <div class="actions">
-            <button onclick="abrirChat('Mentoria')">Chat</button>
-            <button onclick="abrirAgenda()">Agendar</button>
+            <button onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
+              Chat
+           </button>
+            <button onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">Agendar</button>
             <span class="fav" onclick="toggleFav(this)">🤍</span>
           </div>
         </div>
@@ -620,10 +975,19 @@ color:#000000;
           <img src="https://cdn-icons-png.flaticon.com/512/4140/4140064.png" />
           <h3>Fernanda Rocha</h3>
           <p>Profissional • Web Design</p>
-          <div class="rating">⭐⭐⭐⭐⭐</div>
+          <div class="stars">
+            <span onclick="avaliar(this,1)">★</span>
+            <span onclick="avaliar(this,2)">★</span>
+            <span onclick="avaliar(this,3)">★</span>
+            <span onclick="avaliar(this,4)">★</span>
+            <span onclick="avaliar(this,5)">★</span>
+          </div>
+          <div><h1><span class="media">0.0</span></h1></div>
           <div class="actions">
-            <button onclick="abrirChat('Mentoria')">Chat</button>
-            <button onclick="abrirAgenda()">Agendar</button>
+            <button onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
+              Chat
+           </button>
+            <button onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">Agendar</button>
             <span class="fav" onclick="toggleFav(this)">🤍</span>
           </div>
         </div>
@@ -632,10 +996,19 @@ color:#000000;
           <img src="https://cdn-icons-png.flaticon.com/512/4140/4140037.png" />
           <h3>Rafael Souza</h3>
           <p>Professor • Web Design</p>
-          <div class="rating">⭐⭐⭐⭐⭐</div>
+          <div class="stars">
+            <span onclick="avaliar(this,1)">★</span>
+            <span onclick="avaliar(this,2)">★</span>
+            <span onclick="avaliar(this,3)">★</span>
+            <span onclick="avaliar(this,4)">★</span>
+            <span onclick="avaliar(this,5)">★</span>
+          </div>
+          <div><h1><span class="media">0.0</span></h1></div>
           <div class="actions">
-            <button onclick="abrirChat('Mentoria')">Chat</button>
-            <button onclick="abrirAgenda()">Agendar</button>
+            <button onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
+              Chat
+           </button>
+            <button onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">Agendar</button>
             <span class="fav" onclick="toggleFav(this)">🤍</span>
           </div>
         </div>
@@ -644,10 +1017,19 @@ color:#000000;
           <img src="https://cdn-icons-png.flaticon.com/512/4140/4140039.png" />
           <h3>Marcos Silva</h3>
           <p>Professor • Web Design</p>
-          <div class="rating">⭐⭐⭐⭐⭐</div>
+          <div class="stars">
+            <span onclick="avaliar(this,1)">★</span>
+            <span onclick="avaliar(this,2)">★</span>
+            <span onclick="avaliar(this,3)">★</span>
+            <span onclick="avaliar(this,4)">★</span>
+            <span onclick="avaliar(this,5)">★</span>
+          </div>
+          <div><h1><span class="media">0.0</span></h1></div>
           <div class="actions">
-            <button onclick="abrirChat('Mentoria')">Chat</button>
-            <button onclick="abrirAgenda()">Agendar</button>
+            <button onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
+              Chat
+           </button>
+            <button onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">Agendar</button>
             <span class="fav" onclick="toggleFav(this)">🤍</span>
           </div>
         </div>
@@ -656,10 +1038,19 @@ color:#000000;
           <img src="https://cdn-icons-png.flaticon.com/512/4140/4140065.png" />
           <h3>Juliana Carvalho</h3>
           <p>Professora • Logística</p>
-          <div class="rating">⭐⭐⭐⭐⭐</div>
+          <div class="stars">
+            <span onclick="avaliar(this,1)">★</span>
+            <span onclick="avaliar(this,2)">★</span>
+            <span onclick="avaliar(this,3)">★</span>
+            <span onclick="avaliar(this,4)">★</span>
+            <span onclick="avaliar(this,5)">★</span>
+          </div>
+          <div><h1><span class="media">0.0</span></h1></div>
           <div class="actions">
-            <button onclick="abrirChat('Mentoria')">Chat</button>
-            <button onclick="abrirAgenda()">Agendar</button>
+            <button onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
+              Chat
+           </button>
+            <button onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">Agendar</button>
             <span class="fav" onclick="toggleFav(this)">🤍</span>
           </div>
         </div>
@@ -668,10 +1059,19 @@ color:#000000;
           <img src="https://cdn-icons-png.flaticon.com/512/4140/4140071.png" />
           <h3>Camila Santos</h3>
           <p>Professora • Web Design</p>
-          <div class="rating">⭐⭐⭐⭐⭐</div>
+          <div class="stars">
+            <span onclick="avaliar(this,1)">★</span>
+            <span onclick="avaliar(this,2)">★</span>
+            <span onclick="avaliar(this,3)">★</span>
+            <span onclick="avaliar(this,4)">★</span>
+            <span onclick="avaliar(this,5)">★</span>
+          </div>
+          <div><h1><span class="media">0.0</span></h1></div>
           <div class="actions">
-            <button onclick="abrirChat('Mentoria')">Chat</button>
-            <button onclick="abrirAgenda()">Agendar</button>
+            <button onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
+              Chat
+           </button>
+            <button onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">Agendar</button>
             <span class="fav" onclick="toggleFav(this)">🤍</span>
           </div>
         </div>
@@ -680,10 +1080,19 @@ color:#000000;
           <img src="https://cdn-icons-png.flaticon.com/512/4140/4140068.png" />
           <h3>Diego Martins</h3>
           <p>Profissional • Web Design</p>
-          <div class="rating">⭐⭐⭐⭐⭐</div>
+          <div class="stars">
+            <span onclick="avaliar(this,1)">★</span>
+            <span onclick="avaliar(this,2)">★</span>
+            <span onclick="avaliar(this,3)">★</span>
+            <span onclick="avaliar(this,4)">★</span>
+            <span onclick="avaliar(this,5)">★</span>
+          </div>
+          <div><h1><span class="media">0.0</span></h1></div>
           <div class="actions">
-            <button onclick="abrirChat('Mentoria')">Chat</button>
-            <button onclick="abrirAgenda()">Agendar</button>
+            <button onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
+              Chat
+           </button>
+            <button onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">Agendar</button>
             <span class="fav" onclick="toggleFav(this)">🤍</span>
           </div>
         </div>
@@ -692,10 +1101,19 @@ color:#000000;
           <img src="https://cdn-icons-png.flaticon.com/512/4140/4140056.png" />
           <h3>Paulo Henrique</h3>
           <p>Profissional • Logística</p>
-          <div class="rating">⭐⭐⭐⭐⭐</div>
+          <div class="stars">
+            <span onclick="avaliar(this,1)">★</span>
+            <span onclick="avaliar(this,2)">★</span>
+            <span onclick="avaliar(this,3)">★</span>
+            <span onclick="avaliar(this,4)">★</span>
+            <span onclick="avaliar(this,5)">★</span>
+          </div>
+          <div><h1><span class="media">0.0</span></h1></div>
           <div class="actions">
-            <button onclick="abrirChat('Mentoria')">Chat</button>
-            <button onclick="abrirAgenda()">Agendar</button>
+            <button onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
+              Chat
+           </button>
+            <button onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">Agendar</button>
             <span class="fav" onclick="toggleFav(this)">🤍</span>
           </div>
         </div>
@@ -704,10 +1122,19 @@ color:#000000;
           <img src="https://cdn-icons-png.flaticon.com/512/4140/4140047.png" />
           <h3>Larissa Gomes</h3>
           <p>Profissional • Logística</p>
-          <div class="rating">⭐⭐⭐⭐</div>
+          <div class="stars">
+            <span onclick="avaliar(this,1)">★</span>
+            <span onclick="avaliar(this,2)">★</span>
+            <span onclick="avaliar(this,3)">★</span>
+            <span onclick="avaliar(this,4)">★</span>
+            <span onclick="avaliar(this,5)">★</span>
+          </div>
+          <div><h1><span class="media">0.0</span></h1></div>
           <div class="actions">
-            <button onclick="abrirChat('Mentoria')">Chat</button>
-            <button onclick="abrirAgenda()">Agendar</button>
+            <button onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
+              Chat
+           </button>
+            <button onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">Agendar</button>
             <span class="fav" onclick="toggleFav(this)">🤍</span>
           </div>
         </div>
@@ -716,10 +1143,19 @@ color:#000000;
           <img src="https://cdn-icons-png.flaticon.com/512/4140/4140061.png" />
           <h3>Eduardo Mendes</h3>
           <p>Professor • Logística</p>
-          <div class="rating">⭐⭐⭐⭐⭐</div>
+          <div class="stars">
+            <span onclick="avaliar(this,1)">★</span>
+            <span onclick="avaliar(this,2)">★</span>
+            <span onclick="avaliar(this,3)">★</span>
+            <span onclick="avaliar(this,4)">★</span>
+            <span onclick="avaliar(this,5)">★</span>
+          </div>
+          <div><h1><span class="media">0.0</span></h1></div>
           <div class="actions">
-            <button onclick="abrirChat('Mentoria')">Chat</button>
-            <button onclick="abrirAgenda()">Agendar</button>
+            <button onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
+              Chat
+           </button>
+            <button onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">Agendar</button>
             <span class="fav" onclick="toggleFav(this)">🤍</span>
           </div>
         </div>
@@ -728,10 +1164,19 @@ color:#000000;
           <img src="https://cdn-icons-png.flaticon.com/512/4140/4140064.png" />
           <h3>Aline Batista</h3>
           <p>Profissional • Logística</p>
-          <div class="rating">⭐⭐⭐⭐⭐</div>
+          <div class="stars">
+            <span onclick="avaliar(this,1)">★</span>
+            <span onclick="avaliar(this,2)">★</span>
+            <span onclick="avaliar(this,3)">★</span>
+            <span onclick="avaliar(this,4)">★</span>
+            <span onclick="avaliar(this,5)">★</span>
+          </div>
+          <div><h1><span class="media">0.0</span></h1></div>
           <div class="actions">
-            <button onclick="abrirChat('Mentoria')">Chat</button>
-            <button onclick="abrirAgenda()">Agendar</button>
+            <button onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
+              Chat
+           </button>
+            <button onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">Agendar</button>
             <span class="fav" onclick="toggleFav(this)">🤍</span>
           </div>
         </div>
@@ -740,10 +1185,19 @@ color:#000000;
           <img src="https://cdn-icons-png.flaticon.com/512/4140/4140056.png" />
           <h3>Gabriel Souza</h3>
           <p>Professor • Web Design</p>
-          <div class="rating">⭐⭐⭐⭐⭐</div>
+          <div class="stars">
+            <span onclick="avaliar(this,1)">★</span>
+            <span onclick="avaliar(this,2)">★</span>
+            <span onclick="avaliar(this,3)">★</span>
+            <span onclick="avaliar(this,4)">★</span>
+            <span onclick="avaliar(this,5)">★</span>
+          </div>
+          <div><h1><span class="media">0.0</span></h1></div>
           <div class="actions">
-            <button onclick="abrirChat('Mentoria')">Chat</button>
-            <button onclick="abrirAgenda()">Agendar</button>
+            <button onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
+              Chat
+           </button>
+            <button onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">Agendar</button>
             <span class="fav" onclick="toggleFav(this)">🤍</span>
           </div>
         </div>
@@ -752,10 +1206,19 @@ color:#000000;
           <img src="https://cdn-icons-png.flaticon.com/512/4140/4140037.png" />
           <h3>Carla Fernandes</h3>
           <p>Professora • UX/UI</p>
-          <div class="rating">⭐⭐⭐⭐⭐</div>
+          <div class="stars">
+            <span onclick="avaliar(this,1)">★</span>
+            <span onclick="avaliar(this,2)">★</span>
+            <span onclick="avaliar(this,3)">★</span>
+            <span onclick="avaliar(this,4)">★</span>
+            <span onclick="avaliar(this,5)">★</span>
+          </div>
+          <div><h1><span class="media">0.0</span></h1></div>
           <div class="actions">
-            <button onclick="abrirChat('Mentoria')">Chat</button>
-            <button onclick="abrirAgenda()">Agendar</button>
+            <button onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
+              Chat
+           </button>
+            <button onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">Agendar</button>
             <span class="fav" onclick="toggleFav(this)">🤍</span>
           </div>
         </div>
@@ -764,10 +1227,19 @@ color:#000000;
           <img src="https://cdn-icons-png.flaticon.com/512/4140/4140068.png" />
           <h3>Leonardo Ribeiro</h3>
           <p>Profissional • Front-end</p>
-          <div class="rating">⭐⭐⭐⭐⭐</div>
+          <div class="stars">
+            <span onclick="avaliar(this,1)">★</span>
+            <span onclick="avaliar(this,2)">★</span>
+            <span onclick="avaliar(this,3)">★</span>
+            <span onclick="avaliar(this,4)">★</span>
+            <span onclick="avaliar(this,5)">★</span>
+          </div>
+          <div><h1><span class="media">0.0</span></h1></div>
           <div class="actions">
-            <button onclick="abrirChat('Mentoria')">Chat</button>
-            <button onclick="abrirAgenda()">Agendar</button>
+            <button onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
+              Chat
+           </button>
+            <button onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">Agendar</button>
             <span class="fav" onclick="toggleFav(this)">🤍</span>
           </div>
         </div>
@@ -776,10 +1248,19 @@ color:#000000;
           <img src="https://cdn-icons-png.flaticon.com/512/4140/4140071.png" />
           <h3>Vanessa Costa</h3>
           <p>Professora • Web Design</p>
-          <div class="rating">⭐⭐⭐⭐⭐</div>
+          <div class="stars">
+            <span onclick="avaliar(this,1)">★</span>
+            <span onclick="avaliar(this,2)">★</span>
+            <span onclick="avaliar(this,3)">★</span>
+            <span onclick="avaliar(this,4)">★</span>
+            <span onclick="avaliar(this,5)">★</span>
+          </div>
+          <div><h1><span class="media">0.0</span></h1></div>
           <div class="actions">
-            <button onclick="abrirChat('Mentoria')">Chat</button>
-            <button onclick="abrirAgenda()">Agendar</button>
+            <button onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
+              Chat
+           </button>
+            <button onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">Agendar</button>
             <span class="fav" onclick="toggleFav(this)">🤍</span>
           </div>
         </div>
@@ -788,10 +1269,19 @@ color:#000000;
           <img src="https://cdn-icons-png.flaticon.com/512/4140/4140061.png" />
           <h3>Roberto Lima</h3>
           <p>Professor • Web Design</p>
-          <div class="rating">⭐⭐⭐⭐⭐</div>
+          <div class="stars">
+            <span onclick="avaliar(this,1)">★</span>
+            <span onclick="avaliar(this,2)">★</span>
+            <span onclick="avaliar(this,3)">★</span>
+            <span onclick="avaliar(this,4)">★</span>
+            <span onclick="avaliar(this,5)">★</span>
+          </div>
+          <div><h1><span class="media">0.0</span></h1></div>
           <div class="actions">
-            <button onclick="abrirChat('Mentoria')">Chat</button>
-            <button onclick="abrirAgenda()">Agendar</button>
+            <button onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
+              Chat
+           </button>
+            <button onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">Agendar</button>
             <span class="fav" onclick="toggleFav(this)">🤍</span>
           </div>
         </div>
@@ -800,10 +1290,19 @@ color:#000000;
           <img src="https://cdn-icons-png.flaticon.com/512/4140/4140064.png" />
           <h3>Julio César</h3>
           <p>Profissional • Back-end</p>
-          <div class="rating">⭐⭐⭐⭐⭐</div>
+          <div class="stars">
+            <span onclick="avaliar(this,1)">★</span>
+            <span onclick="avaliar(this,2)">★</span>
+            <span onclick="avaliar(this,3)">★</span>
+            <span onclick="avaliar(this,4)">★</span>
+            <span onclick="avaliar(this,5)">★</span>
+          </div>
+          <div><h1><span class="media">0.0</span></h1></div>
           <div class="actions">
-            <button onclick="abrirChat('Mentoria')">Chat</button>
-            <button onclick="abrirAgenda()">Agendar</button>
+            <button onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
+              Chat
+           </button>
+            <button onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">Agendar</button>
             <span class="fav" onclick="toggleFav(this)">🤍</span>
           </div>
         </div>
@@ -812,10 +1311,19 @@ color:#000000;
           <img src="https://cdn-icons-png.flaticon.com/512/4140/4140047.png" />
           <h3>Natália Alves</h3>
           <p>Profissional • Logística</p>
-          <div class="rating">⭐⭐⭐⭐⭐</div>
+          <div class="stars">
+            <span onclick="avaliar(this,1)">★</span>
+            <span onclick="avaliar(this,2)">★</span>
+            <span onclick="avaliar(this,3)">★</span>
+            <span onclick="avaliar(this,4)">★</span>
+            <span onclick="avaliar(this,5)">★</span>
+          </div>
+          <div><h1><span class="media">0.0</span></h1></div>
           <div class="actions">
-            <button onclick="abrirChat('Mentoria')">Chat</button>
-            <button onclick="abrirAgenda()">Agendar</button>
+            <button onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
+              Chat
+           </button>
+            <button onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">Agendar</button>
             <span class="fav" onclick="toggleFav(this)">🤍</span>
           </div>
         </div>
@@ -824,10 +1332,19 @@ color:#000000;
           <img src="https://cdn-icons-png.flaticon.com/512/4140/4140061.png" />
           <h3>André Carvalho</h3>
           <p>Professor • Logística</p>
-          <div class="rating">⭐⭐⭐⭐⭐</div>
+          <div class="stars">
+            <span onclick="avaliar(this,1)">★</span>
+            <span onclick="avaliar(this,2)">★</span>
+            <span onclick="avaliar(this,3)">★</span>
+            <span onclick="avaliar(this,4)">★</span>
+            <span onclick="avaliar(this,5)">★</span>
+          </div>
+          <div><h1><span class="media">0.0</span></h1></div>
           <div class="actions">
-            <button onclick="abrirChat('Mentoria')">Chat</button>
-            <button onclick="abrirAgenda()">Agendar</button>
+            <button onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
+              Chat
+           </button>
+            <button onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">Agendar</button>
             <span class="fav" onclick="toggleFav(this)">🤍</span>
           </div>
         </div>
@@ -836,10 +1353,19 @@ color:#000000;
           <img src="https://cdn-icons-png.flaticon.com/512/4140/4140064.png" />
           <h3>Renata Barbosa</h3>
           <p>Profissional • Logística</p>
-          <div class="rating">⭐⭐⭐⭐⭐</div>
+          <div class="stars">
+            <span onclick="avaliar(this,1)">★</span>
+            <span onclick="avaliar(this,2)">★</span>
+            <span onclick="avaliar(this,3)">★</span>
+            <span onclick="avaliar(this,4)">★</span>
+            <span onclick="avaliar(this,5)">★</span>
+          </div>
+          <div><h1><span class="media">0.0</span></h1></div>
           <div class="actions">
-            <button onclick="abrirChat('Mentoria')">Chat</button>
-            <button onclick="abrirAgenda()">Agendar</button>
+            <button onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
+              Chat
+           </button>
+            <button onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">Agendar</button>
             <span class="fav" onclick="toggleFav(this)">🤍</span>
           </div>
         </div>
@@ -848,10 +1374,19 @@ color:#000000;
           <img src="https://cdn-icons-png.flaticon.com/512/4140/4140037.png" />
           <h3>Márcio Teixeira</h3>
           <p>Professor • Logística</p>
-          <div class="rating">⭐⭐⭐⭐⭐</div>
+          <div class="stars">
+            <span onclick="avaliar(this,1)">★</span>
+            <span onclick="avaliar(this,2)">★</span>
+            <span onclick="avaliar(this,3)">★</span>
+            <span onclick="avaliar(this,4)">★</span>
+            <span onclick="avaliar(this,5)">★</span>
+          </div>
+          <div><h1><span class="media">0.0</span></h1></div>
           <div class="actions">
-            <button onclick="abrirChat('Mentoria')">Chat</button>
-            <button onclick="abrirAgenda()">Agendar</button>
+            <button onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
+              Chat
+           </button>
+            <button onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">Agendar</button>
             <span class="fav" onclick="toggleFav(this)">🤍</span>
           </div>
         </div>
@@ -860,10 +1395,19 @@ color:#000000;
           <img src="https://cdn-icons-png.flaticon.com/512/4140/4140068.png" />
           <h3>Juliana Mendes</h3>
           <p>Profissional • Front-end</p>
-          <div class="rating">⭐⭐⭐⭐⭐</div>
+          <div class="stars">
+            <span onclick="avaliar(this,1)">★</span>
+            <span onclick="avaliar(this,2)">★</span>
+            <span onclick="avaliar(this,3)">★</span>
+            <span onclick="avaliar(this,4)">★</span>
+            <span onclick="avaliar(this,5)">★</span>
+          </div>
+          <div><h1><span class="media">0.0</span></h1></div>
           <div class="actions">
-            <button onclick="abrirChat('Mentoria')">Chat</button>
-            <button onclick="abrirAgenda()">Agendar</button>
+            <button onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
+              Chat
+           </button>
+            <button onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">Agendar</button>
             <span class="fav" onclick="toggleFav(this)">🤍</span>
           </div>
         </div>
@@ -872,10 +1416,19 @@ color:#000000;
           <img src="https://cdn-icons-png.flaticon.com/512/4140/4140061.png" />
           <h3>Cláudia Ribeiro</h3>
           <p>Professora • Front-end</p>
-          <div class="rating">⭐⭐⭐⭐⭐</div>
+          <div class="stars">
+            <span onclick="avaliar(this,1)">★</span>
+            <span onclick="avaliar(this,2)">★</span>
+            <span onclick="avaliar(this,3)">★</span>
+            <span onclick="avaliar(this,4)">★</span>
+            <span onclick="avaliar(this,5)">★</span>
+          </div>
+          <div><h1><span class="media">0.0</span></h1></div>
           <div class="actions">
-            <button onclick="abrirChat('Mentoria')">Chat</button>
-            <button onclick="abrirAgenda()">Agendar</button>
+            <button onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
+              Chat
+           </button>
+            <button onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">Agendar</button>
             <span class="fav" onclick="toggleFav(this)">🤍</span>
           </div>
         </div>
@@ -884,10 +1437,19 @@ color:#000000;
           <img src="https://cdn-icons-png.flaticon.com/512/4140/4140064.png" />
           <h3>Pedro Nascimento</h3>
           <p>Profissional • Back-end</p>
-          <div class="rating">⭐⭐⭐⭐⭐</div>
+          <div class="stars">
+            <span onclick="avaliar(this,1)">★</span>
+            <span onclick="avaliar(this,2)">★</span>
+            <span onclick="avaliar(this,3)">★</span>
+            <span onclick="avaliar(this,4)">★</span>
+            <span onclick="avaliar(this,5)">★</span>
+          </div>
+          <div><h1><span class="media">0.0</span></h1></div>
           <div class="actions">
-            <button onclick="abrirChat('Mentoria')">Chat</button>
-            <button onclick="abrirAgenda()">Agendar</button>
+            <button onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
+              Chat
+           </button>
+            <button onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">Agendar</button>
             <span class="fav" onclick="toggleFav(this)">🤍</span>
           </div>
         </div>
@@ -896,10 +1458,19 @@ color:#000000;
           <img src="https://cdn-icons-png.flaticon.com/512/4140/4140037.png" />
           <h3>Fernanda Dias</h3>
           <p>Professora • Web Design</p>
-          <div class="rating">⭐⭐⭐⭐⭐</div>
+          <div class="stars">
+            <span onclick="avaliar(this,1)">★</span>
+            <span onclick="avaliar(this,2)">★</span>
+            <span onclick="avaliar(this,3)">★</span>
+            <span onclick="avaliar(this,4)">★</span>
+            <span onclick="avaliar(this,5)">★</span>
+          </div>
+          <div><h1><span class="media">0.0</span></h1></div>
           <div class="actions">
-            <button onclick="abrirChat('Mentoria')">Chat</button>
-            <button onclick="abrirAgenda()">Agendar</button>
+            <button onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
+              Chat
+           </button>
+            <button onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">Agendar</button>
             <span class="fav" onclick="toggleFav(this)">🤍</span>
           </div>
         </div>
@@ -908,10 +1479,19 @@ color:#000000;
           <img src="https://cdn-icons-png.flaticon.com/512/4140/4140068.png" />
           <h3>Ricardo Martins</h3>
           <p>Profissional • Web Design</p>
-          <div class="rating">⭐⭐⭐⭐⭐</div>
+          <div class="stars">
+            <span onclick="avaliar(this,1)">★</span>
+            <span onclick="avaliar(this,2)">★</span>
+            <span onclick="avaliar(this,3)">★</span>
+            <span onclick="avaliar(this,4)">★</span>
+            <span onclick="avaliar(this,5)">★</span>
+          </div>
+          <div><h1><span class="media">0.0</span></h1></div>
           <div class="actions">
-            <button onclick="abrirChat('Mentoria')">Chat</button>
-            <button onclick="abrirAgenda()">Agendar</button>
+            <button onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
+              Chat
+           </button>
+            <button onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">Agendar</button>
             <span class="fav" onclick="toggleFav(this)">🤍</span>
           </div>
         </div>
@@ -920,10 +1500,19 @@ color:#000000;
           <img src="https://cdn-icons-png.flaticon.com/512/4140/4140061.png" />
           <h3>Patrícia Souza</h3>
           <p>Professora • Web Design</p>
-          <div class="rating">⭐⭐⭐⭐⭐</div>
+          <div class="stars">
+            <span onclick="avaliar(this,1)">★</span>
+            <span onclick="avaliar(this,2)">★</span>
+            <span onclick="avaliar(this,3)">★</span>
+            <span onclick="avaliar(this,4)">★</span>
+            <span onclick="avaliar(this,5)">★</span>
+          </div>
+          <div><h1><span class="media">0.0</span></h1></div>
           <div class="actions">
-            <button onclick="abrirChat('Mentoria')">Chat</button>
-            <button onclick="abrirAgenda()">Agendar</button>
+            <button onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
+              Chat
+           </button>
+            <button onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">Agendar</button>
             <span class="fav" onclick="toggleFav(this)">🤍</span>
           </div>
         </div>
@@ -932,10 +1521,19 @@ color:#000000;
           <img src="https://cdn-icons-png.flaticon.com/512/4140/4140064.png" />
           <h3>Lucas Freitas</h3>
           <p>Profissional • Segurança da Informação</p>
-          <div class="rating">⭐⭐⭐⭐⭐</div>
+          <div class="stars">
+            <span onclick="avaliar(this,1)">★</span>
+            <span onclick="avaliar(this,2)">★</span>
+            <span onclick="avaliar(this,3)">★</span>
+            <span onclick="avaliar(this,4)">★</span>
+            <span onclick="avaliar(this,5)">★</span>
+          </div>
+          <div><h1><span class="media">0.0</span></h1></div>
           <div class="actions">
-            <button onclick="abrirChat('Mentoria')">Chat</button>
-            <button onclick="abrirAgenda()">Agendar</button>
+            <button onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
+              Chat
+           </button>
+            <button onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">Agendar</button>
             <span class="fav" onclick="toggleFav(this)">🤍</span>
           </div>
         </div>
@@ -944,18 +1542,26 @@ color:#000000;
           <img src="https://cdn-icons-png.flaticon.com/512/4140/4140068.png" />
           <h3>Felipe Rocha</h3>
           <p>Profissional • UX Design</p>
-          <div class="rating">⭐⭐⭐⭐⭐</div>
+          <div class="stars">
+            <span onclick="avaliar(this,1)">★</span>
+            <span onclick="avaliar(this,2)">★</span>
+            <span onclick="avaliar(this,3)">★</span>
+            <span onclick="avaliar(this,4)">★</span>
+            <span onclick="avaliar(this,5)">★</span>
+          </div>
+          <div><h1><span class="media">0.0</span></h1></div>
           <div class="actions">
-            <button onclick="abrirChat('Mentoria')">Chat</button>
-            <button onclick="abrirAgenda()">Agendar</button>
+            <button onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
+              Chat
+           </button>
+            <button onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">Agendar</button>
             <span class="fav" onclick="toggleFav(this)">🤍</span>
           </div>
         </div>
       </div>
     </div>
 
-        </div> 
-  </div> 
+  
 
   <!-- CHAT -->
   <div id="chatModal" class="chat-modal">
@@ -991,207 +1597,298 @@ color:#000000;
   <p>Study Community ✦ Aprenda, compartilhe e evolua</p>
 </footer>
 
+<!-- ==========================================================================================================================================================================================
+                                          Script
+========================================================================================================================================================================================== -->
+
   <script>
 
     
-    // BUSCA
-    
-    document.getElementById("searchInput").addEventListener("input", function(){
-      let val = this.value.toLowerCase();
-      
-      document.querySelectorAll(".mentor").forEach(m => {
-        m.style.display = m.innerText.toLowerCase().includes(val) ? "" : "none";
-      });
-    });
-    
-    
-    
-    // FILTRO
-   
-    function filtrar(cat, el){
-      document.querySelectorAll(".mentor").forEach(m => {
-        m.style.display = (cat === "all" || m.dataset.cat === cat) ? "" : "none";
-      });
-      
-      document.querySelectorAll(".category").forEach(c => c.classList.remove("active"));
-      el.classList.add("active");
-    }
-    
-    
-   
-    // FAVORITO
+    /* =========================
+   ESTADO GLOBAL
+========================= */
 
-    function toggleFav(el){
-      el.classList.toggle("active");
-      el.textContent = el.classList.contains("active") ? "❤️" : "🤍";
-    }
-    
-    
-   
-    // CHAT
-   
-    function abrirChat(nome){
-      document.getElementById("chatModal").style.display = "flex";
-      document.getElementById("chatTitle").textContent = "Chat com " + nome;
-    }
-    
-    function fecharChat(){
-      document.getElementById("chatModal").style.display = "none";
-    }
-    
-    function enviarMsg(){
-      let input = document.getElementById("msgInput");
-      if(!input.value) return;
-    
-      let div = document.createElement("div");
-      div.textContent = "Você: " + input.value;
-    
-      document.getElementById("chatMessages").appendChild(div);
-      input.value = "";
-    }
-    
-    
-    
-    // AGENDA
-   
-    let mentorAgenda = "";
-    
-    function abrirAgenda(nome){
-      mentorAgenda = nome;
-      document.getElementById("agendaModal").style.display = "flex";
-      document.getElementById("agendaTitulo").textContent = "Agendar com " + nome;
-    }
-    
-    function fecharAgenda(){
-      document.getElementById("agendaModal").style.display = "none";
-    }
-    
-    function confirmarAgenda(){
-      let data = document.getElementById("data").value;
-      let hora = document.getElementById("hora").value;
-      
-      if(!data || !hora){
-        alert("Preencha data e hora!");
-        return;
-      }
-      
-      alert(`Mentoria com ${mentorAgenda} agendada para ${data} às ${hora}`);
-      fecharAgenda();
-    }
-    // ANIMAÇÃO SCROLL
-    
-    const cards = document.querySelectorAll(".mentor");
-    
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("show");
-        }
-      });
-    }, { threshold: 0.2 });
-    
-    cards.forEach(card => observer.observe(card));
-    
-   
+const cooldown = {}; // anti spam avaliação
 
 /* =========================
-   PERFIL + MENU DINÂMICO
+   BUSCA
+========================= */
+
+document.getElementById("searchInput")?.addEventListener("input", function () {
+  const val = this.value.toLowerCase();
+
+  document.querySelectorAll(".mentor").forEach(m => {
+    m.style.display = m.innerText.toLowerCase().includes(val) ? "" : "none";
+  });
+});
+
+/* =========================
+   FILTRO
+========================= */
+
+function filtrar(cat, el) {
+  document.querySelectorAll(".mentor").forEach(m => {
+    m.style.display = cat === "all" || m.dataset.cat === cat ? "" : "none";
+  });
+
+  document.querySelectorAll(".category").forEach(c => c.classList.remove("active"));
+  el.classList.add("active");
+}
+
+/* =========================
+   FAVORITOS
+========================= */
+
+function toggleFav(el) {
+  el.classList.toggle("active");
+  el.textContent = el.classList.contains("active") ? "❤️" : "🤍";
+}
+
+/* =========================
+   CHAT
+========================= */
+
+function abrirChat(nome) {
+  document.getElementById("chatModal").style.display = "flex";
+  document.getElementById("chatTitle").innerText = "Chat com " + nome;
+  document.getElementById("chatMessages").innerHTML = "";
+}
+
+function fecharChat() {
+  document.getElementById("chatModal").style.display = "none";
+}
+
+function enviarMsg() {
+  const input = document.getElementById("msgInput");
+  if (!input.value.trim()) return;
+
+  const div = document.createElement("div");
+  div.innerText = "Você: " + input.value;
+
+  document.getElementById("chatMessages").appendChild(div);
+  input.value = "";
+
+  const chat = document.getElementById("chatMessages");
+  chat.scrollTop = chat.scrollHeight;
+}
+
+/* =========================
+   AGENDA
+========================= */
+
+let mentorAgenda = "";
+
+function abrirAgenda(nome) {
+  mentorAgenda = nome;
+
+  document.getElementById("agendaModal").style.display = "flex";
+  document.getElementById("agendaTitulo").innerText = "Agendar com " + nome;
+}
+
+function fecharAgenda() {
+  document.getElementById("agendaModal").style.display = "none";
+}
+
+function confirmarAgenda() {
+  const data = document.getElementById("data").value;
+  const hora = document.getElementById("hora").value;
+
+  if (!data || !hora) {
+    alert("Preencha data e hora");
+    return;
+  }
+
+  alert(`Mentoria com ${mentorAgenda}\nagendada para ${data} às ${hora}`);
+  fecharAgenda();
+}
+
+/* =========================
+   PERFIL
 ========================= */
 
 function getPerfil() {
   return localStorage.getItem("perfil") || "aluno";
 }
 
-const loginLink = document.getElementById("loginLink");
-
-// atualiza link de login
-if (loginLink) {
-  loginLink.textContent = "Perfil";
-  loginLink.href = "perfil.html";
+function trocarPerfil() {
+  const novo = getPerfil() === "aluno" ? "professor" : "aluno";
+  localStorage.setItem("perfil", novo);
+  location.reload();
 }
 
-/* menu base */
+function atualizarTextoPerfil() {
+  const label = document.getElementById("perfilAtual");
+  if (label) {
+    label.innerText = "Perfil atual: " + getPerfil().toUpperCase();
+  }
+}
+
+/* =========================
+   MENU DINÂMICO
+========================= */
+
+const nav = document.querySelector("nav");
+
 const menuBase = [
   { nome: "Início", link: "index.html" },
   { nome: "Fórum", link: "forum.html" },
-  { nome: "Matérias", link: "materiais.html" },
+  { nome: "Matérias", link: "materiais.html" }
 ];
 
-/* itens extras por perfil */
 const menuAluno = [
   { nome: "Mentoria", link: "mentoria.html" },
-  { nome: "Missão", link: "missao.html" },
+  { nome: "Missão", link: "missao.html" }
 ];
 
 const menuProfessor = [
-  { nome: "Turmas", link: "turmas.html" },
+  { nome: "Turmas", link: "turmas.html" }
 ];
-
-const nav = document.querySelector("nav");
 
 function renderMenu() {
   if (!nav) return;
 
-  let menuFinal = [...menuBase];
+  let menu = [...menuBase];
 
-  if (getPerfil() === "professor") {
-    menuFinal = menuFinal.concat(menuProfessor);
-  } else {
-    menuFinal = menuFinal.concat(menuAluno);
-  }
+  menu = getPerfil() === "professor"
+    ? menu.concat(menuProfessor)
+    : menu.concat(menuAluno);
 
-  menuFinal.push({ nome: "Perfil", link: "perfil.html" });
+  menu.push({ nome: "Perfil", link: "perfil.html" });
 
-  nav.innerHTML = menuFinal
-    .map(item => `<a href="${item.link}">${item.nome}</a>`)
+  nav.innerHTML = menu
+    .map(i => `<a href="${i.link}">${i.nome}</a>`)
     .join("");
 }
 
-renderMenu();
-
 /* =========================
-   PERFIL
-========================= */
-
-function atualizarTextoPerfil() {
-  const perfil = getPerfil();
-  const label = document.getElementById("perfilAtual");
-
-  if (label) {
-    label.textContent = "Perfil atual: " + perfil.toUpperCase();
-  }
-}
-
-function trocarPerfil() {
-  let perfilAtual = getPerfil();
-
-  perfilAtual = perfilAtual === "aluno" ? "professor" : "aluno";
-
-  localStorage.setItem("perfil", perfilAtual);
-
-  atualizarTextoPerfil();
-  location.reload();
-}
-
-atualizarTextoPerfil();
-
-
-/* =========================
-   CONTROLE DE BOTÕES PROFESSOR
+   BOTÕES PROFESSOR
 ========================= */
 
 function controlarBotoesProfessor() {
   const perfil = getPerfil();
 
   document.querySelectorAll(".prof-actions").forEach(el => {
-    el.style.display = (perfil === "professor") ? "flex" : "none";
+    el.style.display = perfil === "professor" ? "flex" : "none";
   });
 }
 
-controlarBotoesProfessor();
+/* =========================
+   AVALIAÇÃO (ESTRELAS)
+========================= */
 
+function avaliar(el, nota) {
+  const card = el.closest(".mentor");
+  const id = card.dataset.id;
+  const stars = card.querySelectorAll(".stars span");
+
+  if (cooldown[id]) return;
+
+  cooldown[id] = true;
+  setTimeout(() => (cooldown[id] = false), 2500);
+
+  stars.forEach((s, i) => {
+    s.classList.toggle("active", i < nota);
+
+    if (i < nota) {
+      s.animate(
+        [
+          { transform: "scale(0.5)", opacity: 0.3 },
+          { transform: "scale(1.4)", opacity: 1 },
+          { transform: "scale(1)" }
+        ],
+        { duration: 300, easing: "ease-out" }
+      );
+    }
+  });
+
+  const key = "mentor_" + id;
+  const notas = JSON.parse(localStorage.getItem(key)) || [];
+  notas.push(nota);
+  localStorage.setItem(key, JSON.stringify(notas));
+
+  atualizarMedia(id);
+}
+
+/* =========================
+   MÉDIA
+========================= */
+
+function atualizarMedia(id) {
+  const notas = JSON.parse(localStorage.getItem("mentor_" + id)) || [];
+  const card = document.querySelector(`.mentor[data-id="${id}"]`);
+  if (!card) return;
+
+  const mediaEl = card.querySelector(".media");
+
+  if (!notas.length) {
+    mediaEl.innerText = "0.0";
+    return;
+  }
+
+  const media = notas.reduce((a, b) => a + b, 0) / notas.length;
+  mediaEl.innerText = media.toFixed(1);
+}
+
+/* =========================
+   HOVER ESTRELAS
+========================= */
+
+function initHoverStars() {
+  document.querySelectorAll(".mentor").forEach(card => {
+    const stars = card.querySelectorAll(".stars span");
+
+    stars.forEach((star, index) => {
+      star.addEventListener("mouseenter", () => {
+        stars.forEach((s, i) => s.classList.toggle("hover", i <= index));
+      });
+
+      star.addEventListener("mouseleave", () => {
+        stars.forEach(s => s.classList.remove("hover"));
+      });
+    });
+  });
+}
+
+/* =========================
+   ANIMAÇÃO SCROLL
+========================= */
+
+function initScroll() {
+  const cards = document.querySelectorAll(".mentor");
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+      }
+    });
+  }, { threshold: 0.2 });
+
+  cards.forEach(card => observer.observe(card));
+}
+
+/* =========================
+   INICIALIZAÇÃO ÚNICA
+========================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+  renderMenu();
+  atualizarTextoPerfil();
+  controlarBotoesProfessor();
+  initHoverStars();
+  initScroll();
+
+  document.querySelectorAll(".mentor").forEach(card => {
+    atualizarMedia(card.dataset.id);
+  });
+
+  document.querySelectorAll(".stars span").forEach(s => {
+    s.classList.remove("active");
+  });
+});
 </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
   </body>
-</html>
+</html> 
+
