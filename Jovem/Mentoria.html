@@ -84,6 +84,34 @@
 
 </div>
 
+<div class="ranking-box professor-only">
+  <div class="ranking-box">
+    <h2>🏆 Ranking da Turma</h2>
+    <div id="rankingLista"></div>
+    <div class="ranking-dashboard">
+
+      <div class="ranking-card ouro">
+        <span>🥇</span>
+        <h3>Aluno Mais Ativo</h3>
+        <p>João Silva</p>
+      </div>
+    
+      <div class="ranking-card prata">
+        <span>🏆</span>
+        <h3>Hall da Fama</h3>
+        <p>Maria Santos</p>
+      </div>
+    
+      <div class="ranking-card bronze">
+        <span>⭐</span>
+        <h3>Melhor Média</h3>
+        <p>9.8</p>
+      </div>
+    
+    </div>
+  </div>
+</div>
+
       <div class="search">
         <input type="text" id="searchInput" placeholder="Pesquisar mentor..." />
       </div>
@@ -95,34 +123,6 @@
           >Profissionais da Àrea</span
         >
       </div>
-
-      <div class="ranking-box professor-only">
-      <div class="ranking-box">
-        <h2>🏆 Ranking da Turma</h2>
-        <div id="rankingLista"></div>
-        <div class="ranking-dashboard">
-
-          <div class="ranking-card ouro">
-            <span>🥇</span>
-            <h3>Aluno Mais Ativo</h3>
-            <p>João Silva</p>
-          </div>
-        
-          <div class="ranking-card prata">
-            <span>🏆</span>
-            <h3>Hall da Fama</h3>
-            <p>Maria Santos</p>
-          </div>
-        
-          <div class="ranking-card bronze">
-            <span>⭐</span>
-            <h3>Melhor Média</h3>
-            <p>9.8</p>
-          </div>
-        
-        </div>
-      </div>
-    </div>
 
       <div class="mentors">
         <div class="mentor" data-cat="prof2" data-id="1">
@@ -138,10 +138,16 @@
           </div>
           <div><h1><span class="media">0.0</span></h1></div>
           <div class="actions">
-            <button onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
+            <button class="btn-chat"
+              onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
               Chat
-           </button>
-            <button onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">Agendar</button>
+            </button>
+          
+            <button class="btn-acao"
+              onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">
+              Agendar
+            </button>
+          
             <span class="fav" onclick="toggleFav(this)">🤍</span>
           </div>
         </div>
@@ -159,10 +165,16 @@
           </div>
           <div><h1><span class="media">0.0</span></h1></div>
           <div class="actions">
-            <button onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
+            <button class="btn-chat"
+              onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
               Chat
-           </button>
-            <button onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">Agendar</button>
+            </button>
+          
+            <button class="btn-acao"
+              onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">
+              Agendar
+            </button>
+          
             <span class="fav" onclick="toggleFav(this)">🤍</span>
           </div>
         </div>
@@ -180,10 +192,16 @@
           </div>
           <div><h1><span class="media">0.0</span></h1></div>
           <div class="actions">
-            <button onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
+            <button class="btn-chat"
+              onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
               Chat
-           </button>
-            <button onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">Agendar</button>
+            </button>
+          
+            <button class="btn-acao"
+              onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">
+              Agendar
+            </button>
+          
             <span class="fav" onclick="toggleFav(this)">🤍</span>
           </div>
         </div>
@@ -201,10 +219,16 @@
           </div>
           <div><h1><span class="media">0.0</span></h1></div>
           <div class="actions">
-            <button onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
+            <button class="btn-chat"
+              onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
               Chat
-           </button>
-            <button onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">Agendar</button>
+            </button>
+          
+            <button class="btn-acao"
+              onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">
+              Agendar
+            </button>
+          
             <span class="fav" onclick="toggleFav(this)">🤍</span>
           </div>
         </div>
@@ -222,10 +246,16 @@
           </div>
           <div><h1><span class="media">0.0</span></h1></div>
           <div class="actions">
-            <button onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
+            <button class="btn-chat"
+              onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
               Chat
-           </button>
-            <button onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">Agendar</button>
+            </button>
+          
+            <button class="btn-acao"
+              onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">
+              Agendar
+            </button>
+          
             <span class="fav" onclick="toggleFav(this)">🤍</span>
           </div>
         </div>
@@ -243,10 +273,16 @@
           </div>
           <div><h1><span class="media">0.0</span></h1></div>
           <div class="actions">
-            <button onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
+            <button class="btn-chat"
+              onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
               Chat
-           </button>
-            <button onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">Agendar</button>
+            </button>
+          
+            <button class="btn-acao"
+              onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">
+              Agendar
+            </button>
+          
             <span class="fav" onclick="toggleFav(this)">🤍</span>
           </div>
         </div>
@@ -264,10 +300,16 @@
           </div>
           <div><h1><span class="media">0.0</span></h1></div>
           <div class="actions">
-            <button onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
+            <button class="btn-chat"
+              onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
               Chat
-           </button>
-            <button onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">Agendar</button>
+            </button>
+          
+            <button class="btn-acao"
+              onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">
+              Agendar
+            </button>
+          
             <span class="fav" onclick="toggleFav(this)">🤍</span>
           </div>
         </div>
@@ -285,10 +327,16 @@
           </div>
           <div><h1><span class="media">0.0</span></h1></div>
           <div class="actions">
-            <button onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
+            <button class="btn-chat"
+              onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
               Chat
-           </button>
-            <button onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">Agendar</button>
+            </button>
+          
+            <button class="btn-acao"
+              onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">
+              Agendar
+            </button>
+          
             <span class="fav" onclick="toggleFav(this)">🤍</span>
           </div>
         </div>
@@ -306,10 +354,16 @@
           </div>
           <div><h1><span class="media">0.0</span></h1></div>
           <div class="actions">
-            <button onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
+            <button class="btn-chat"
+              onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
               Chat
-           </button>
-            <button onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">Agendar</button>
+            </button>
+          
+            <button class="btn-acao"
+              onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">
+              Agendar
+            </button>
+          
             <span class="fav" onclick="toggleFav(this)">🤍</span>
           </div>
         </div>
@@ -327,10 +381,16 @@
           </div>
           <div><h1><span class="media">0.0</span></h1></div>
           <div class="actions">
-            <button onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
+            <button class="btn-chat"
+              onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
               Chat
-           </button>
-            <button onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">Agendar</button>
+            </button>
+          
+            <button class="btn-acao"
+              onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">
+              Agendar
+            </button>
+          
             <span class="fav" onclick="toggleFav(this)">🤍</span>
           </div>
         </div>
@@ -348,10 +408,16 @@
           </div>
           <div><h1><span class="media">0.0</span></h1></div>
           <div class="actions">
-            <button onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
+            <button class="btn-chat"
+              onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
               Chat
-           </button>
-            <button onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">Agendar</button>
+            </button>
+          
+            <button class="btn-acao"
+              onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">
+              Agendar
+            </button>
+          
             <span class="fav" onclick="toggleFav(this)">🤍</span>
           </div>
         </div>
@@ -369,10 +435,16 @@
           </div>
           <div><h1><span class="media">0.0</span></h1></div>
           <div class="actions">
-            <button onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
+            <button class="btn-chat"
+              onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
               Chat
-           </button>
-            <button onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">Agendar</button>
+            </button>
+          
+            <button class="btn-acao"
+              onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">
+              Agendar
+            </button>
+          
             <span class="fav" onclick="toggleFav(this)">🤍</span>
           </div>
         </div>
@@ -390,10 +462,16 @@
           </div>
           <div><h1><span class="media">0.0</span></h1></div>
           <div class="actions">
-            <button onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
+            <button class="btn-chat"
+              onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
               Chat
-           </button>
-            <button onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">Agendar</button>
+            </button>
+          
+            <button class="btn-acao"
+              onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">
+              Agendar
+            </button>
+          
             <span class="fav" onclick="toggleFav(this)">🤍</span>
           </div>
         </div>
@@ -411,10 +489,16 @@
           </div>
           <div><h1><span class="media">0.0</span></h1></div>
           <div class="actions">
-            <button onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
+            <button class="btn-chat"
+              onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
               Chat
-           </button>
-            <button onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">Agendar</button>
+            </button>
+          
+            <button class="btn-acao"
+              onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">
+              Agendar
+            </button>
+          
             <span class="fav" onclick="toggleFav(this)">🤍</span>
           </div>
         </div>
@@ -432,10 +516,16 @@
           </div>
           <div><h1><span class="media">0.0</span></h1></div>
           <div class="actions">
-            <button onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
+            <button class="btn-chat"
+              onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
               Chat
-           </button>
-            <button onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">Agendar</button>
+            </button>
+          
+            <button class="btn-acao"
+              onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">
+              Agendar
+            </button>
+          
             <span class="fav" onclick="toggleFav(this)">🤍</span>
           </div>
         </div>
@@ -453,10 +543,16 @@
           </div>
           <div><h1><span class="media">0.0</span></h1></div>
           <div class="actions">
-            <button onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
+            <button class="btn-chat"
+              onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
               Chat
-           </button>
-            <button onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">Agendar</button>
+            </button>
+          
+            <button class="btn-acao"
+              onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">
+              Agendar
+            </button>
+          
             <span class="fav" onclick="toggleFav(this)">🤍</span>
           </div>
         </div>
@@ -474,10 +570,16 @@
           </div>
           <div><h1><span class="media">0.0</span></h1></div>
           <div class="actions">
-            <button onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
+            <button class="btn-chat"
+              onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
               Chat
-           </button>
-            <button onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">Agendar</button>
+            </button>
+          
+            <button class="btn-acao"
+              onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">
+              Agendar
+            </button>
+          
             <span class="fav" onclick="toggleFav(this)">🤍</span>
           </div>
         </div>
@@ -495,10 +597,16 @@
           </div>
           <div><h1><span class="media">0.0</span></h1></div>
           <div class="actions">
-            <button onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
+            <button class="btn-chat"
+              onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
               Chat
-           </button>
-            <button onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">Agendar</button>
+            </button>
+          
+            <button class="btn-acao"
+              onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">
+              Agendar
+            </button>
+          
             <span class="fav" onclick="toggleFav(this)">🤍</span>
           </div>
         </div>
@@ -516,10 +624,16 @@
           </div>
           <div><h1><span class="media">0.0</span></h1></div>
           <div class="actions">
-            <button onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
+            <button class="btn-chat"
+              onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
               Chat
-           </button>
-            <button onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">Agendar</button>
+            </button>
+          
+            <button class="btn-acao"
+              onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">
+              Agendar
+            </button>
+          
             <span class="fav" onclick="toggleFav(this)">🤍</span>
           </div>
         </div>
@@ -537,10 +651,16 @@
           </div>
           <div><h1><span class="media">0.0</span></h1></div>
           <div class="actions">
-            <button onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
+            <button class="btn-chat"
+              onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
               Chat
-           </button>
-            <button onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">Agendar</button>
+            </button>
+          
+            <button class="btn-acao"
+              onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">
+              Agendar
+            </button>
+          
             <span class="fav" onclick="toggleFav(this)">🤍</span>
           </div>
         </div>
@@ -558,10 +678,16 @@
           </div>
           <div><h1><span class="media">0.0</span></h1></div>
           <div class="actions">
-            <button onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
+            <button class="btn-chat"
+              onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
               Chat
-           </button>
-            <button onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">Agendar</button>
+            </button>
+          
+            <button class="btn-acao"
+              onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">
+              Agendar
+            </button>
+          
             <span class="fav" onclick="toggleFav(this)">🤍</span>
           </div>
         </div>
@@ -579,10 +705,16 @@
           </div>
           <div><h1><span class="media">0.0</span></h1></div>
           <div class="actions">
-            <button onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
+            <button class="btn-chat"
+              onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
               Chat
-           </button>
-            <button onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">Agendar</button>
+            </button>
+          
+            <button class="btn-acao"
+              onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">
+              Agendar
+            </button>
+          
             <span class="fav" onclick="toggleFav(this)">🤍</span>
           </div>
         </div>
@@ -600,10 +732,16 @@
           </div>
           <div><h1><span class="media">0.0</span></h1></div>
           <div class="actions">
-            <button onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
+            <button class="btn-chat"
+              onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
               Chat
-           </button>
-            <button onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">Agendar</button>
+            </button>
+          
+            <button class="btn-acao"
+              onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">
+              Agendar
+            </button>
+          
             <span class="fav" onclick="toggleFav(this)">🤍</span>
           </div>
         </div>
@@ -621,10 +759,16 @@
           </div>
           <div><h1><span class="media">0.0</span></h1></div>
           <div class="actions">
-            <button onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
+            <button class="btn-chat"
+              onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
               Chat
-           </button>
-            <button onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">Agendar</button>
+            </button>
+          
+            <button class="btn-acao"
+              onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">
+              Agendar
+            </button>
+          
             <span class="fav" onclick="toggleFav(this)">🤍</span>
           </div>
         </div>
@@ -642,10 +786,16 @@
           </div>
           <div><h1><span class="media">0.0</span></h1></div>
           <div class="actions">
-            <button onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
+            <button class="btn-chat"
+              onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
               Chat
-           </button>
-            <button onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">Agendar</button>
+            </button>
+          
+            <button class="btn-acao"
+              onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">
+              Agendar
+            </button>
+          
             <span class="fav" onclick="toggleFav(this)">🤍</span>
           </div>
         </div>
@@ -663,10 +813,16 @@
           </div>
           <div><h1><span class="media">0.0</span></h1></div>
           <div class="actions">
-            <button onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
+            <button class="btn-chat"
+              onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
               Chat
-           </button>
-            <button onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">Agendar</button>
+            </button>
+          
+            <button class="btn-acao"
+              onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">
+              Agendar
+            </button>
+          
             <span class="fav" onclick="toggleFav(this)">🤍</span>
           </div>
         </div>
@@ -684,10 +840,16 @@
           </div>
           <div><h1><span class="media">0.0</span></h1></div>
           <div class="actions">
-            <button onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
+            <button class="btn-chat"
+              onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
               Chat
-           </button>
-            <button onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">Agendar</button>
+            </button>
+          
+            <button class="btn-acao"
+              onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">
+              Agendar
+            </button>
+          
             <span class="fav" onclick="toggleFav(this)">🤍</span>
           </div>
         </div>
@@ -705,10 +867,16 @@
           </div>
           <div><h1><span class="media">0.0</span></h1></div>
           <div class="actions">
-            <button onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
+            <button class="btn-chat"
+              onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
               Chat
-           </button>
-            <button onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">Agendar</button>
+            </button>
+          
+            <button class="btn-acao"
+              onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">
+              Agendar
+            </button>
+          
             <span class="fav" onclick="toggleFav(this)">🤍</span>
           </div>
         </div>
@@ -726,10 +894,16 @@
           </div>
           <div><h1><span class="media">0.0</span></h1></div>
           <div class="actions">
-            <button onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
+            <button class="btn-chat"
+              onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
               Chat
-           </button>
-            <button onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">Agendar</button>
+            </button>
+          
+            <button class="btn-acao"
+              onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">
+              Agendar
+            </button>
+          
             <span class="fav" onclick="toggleFav(this)">🤍</span>
           </div>
         </div>
@@ -747,10 +921,16 @@
           </div>
           <div><h1><span class="media">0.0</span></h1></div>
           <div class="actions">
-            <button onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
+            <button class="btn-chat"
+              onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
               Chat
-           </button>
-            <button onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">Agendar</button>
+            </button>
+          
+            <button class="btn-acao"
+              onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">
+              Agendar
+            </button>
+          
             <span class="fav" onclick="toggleFav(this)">🤍</span>
           </div>
         </div>
@@ -767,11 +947,17 @@
             <span onclick="avaliar(this,5)">★</span>
           </div>
           <div><h1><span class="media">0.0</span></h1></div>
-          <div class="actions">
-            <button onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
+           <div class="actions">
+            <button class="btn-chat"
+              onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
               Chat
-           </button>
-            <button onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">Agendar</button>
+            </button>
+          
+            <button class="btn-acao"
+              onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">
+              Agendar
+            </button>
+          
             <span class="fav" onclick="toggleFav(this)">🤍</span>
           </div>
         </div>
@@ -789,10 +975,16 @@
           </div>
           <div><h1><span class="media">0.0</span></h1></div>
           <div class="actions">
-            <button onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
+            <button class="btn-chat"
+              onclick="abrirChat(this.closest('.mentor').querySelector('h3').innerText)">
               Chat
-           </button>
-            <button onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">Agendar</button>
+            </button>
+          
+            <button class="btn-acao"
+              onclick="abrirAgenda(this.closest('.mentor').querySelector('h3').innerText)">
+              Agendar
+            </button>
+          
             <span class="fav" onclick="toggleFav(this)">🤍</span>
           </div>
         </div>
@@ -1285,17 +1477,159 @@ function controlarBotoesProfessor() {
   }
 }
 
-/* Alternar perfil */
+/* =========================
+   TROCAR PERFIL
+========================= */
+
 function trocarPerfil() {
 
-  modoProfessor = !modoProfessor;
+// alterna entre aluno e professor
+modoProfessor = !modoProfessor;
 
-  localStorage.setItem(
-    "modoProfessor",
+// salva no navegador
+localStorage.setItem(
+  "modoProfessor",
+  modoProfessor
+);
+
+// atualiza body
+document.body.classList.toggle(
+  "professor",
+  modoProfessor
+);
+
+// atualiza texto do botão
+const texto =
+  document.getElementById("textoPerfil");
+
+if (texto) {
+
+  texto.innerText =
     modoProfessor
-  );
+      ? "Modo Professor"
+      : "Modo Aluno";
 
-  controlarBotoesProfessor();
+}
+
+// mostra/esconde áreas do professor
+document
+  .querySelectorAll(".professor-only")
+  .forEach(area => {
+
+    area.style.display =
+      modoProfessor
+        ? "block"
+        : "none";
+
+  });
+
+// altera os cards
+document
+  .querySelectorAll(".mentor")
+  .forEach(card => {
+
+    const profissao =
+      card.querySelector("p");
+
+    if (!profissao) return;
+
+    if (modoProfessor) {
+
+      profissao.dataset.original =
+        profissao.dataset.original ||
+        profissao.innerHTML;
+
+      profissao.innerHTML =
+        profissao.innerHTML
+          .replace("Professor", "Aluno")
+          .replace("Professora", "Aluno")
+          .replace("Profissional", "Aluno");
+
+    } else {
+
+      if (profissao.dataset.original) {
+
+        profissao.innerHTML =
+          profissao.dataset.original;
+
+      }
+
+    }
+
+    // botão agendar
+    const btn =
+      card.querySelector(
+        ".btn-acao"
+      );
+
+    if (!btn) return;
+
+    if (modoProfessor) {
+
+      btn.innerHTML =
+        "✔";
+
+      btn.classList.add(
+        "aceitar"
+      );
+
+      let recusar =
+        card.querySelector(
+          ".recusar-btn"
+        );
+
+      if (!recusar) {
+
+        recusar =
+          document.createElement(
+            "button"
+          );
+
+        recusar.className =
+          "recusar-btn";
+
+        recusar.innerHTML =
+          "✖";
+
+        recusar.onclick =
+          () => {
+
+            alert(
+              "Mentoria recusada."
+            );
+
+          };
+
+        btn.parentNode.insertBefore(
+          recusar,
+          btn.nextSibling
+        );
+      }
+
+    } else {
+
+      btn.innerHTML =
+        "Agendar";
+
+      btn.classList.remove(
+        "aceitar"
+      );
+
+      const recusar =
+        card.querySelector(
+          ".recusar-btn"
+        );
+
+      if (recusar) {
+
+        recusar.remove();
+
+      }
+
+    }
+
+  });
+
 }
 
 /* =========================
@@ -1447,8 +1781,141 @@ document.addEventListener(
 
     atualizarDashboard();
 
+
+    modoProfessor =
+  localStorage.getItem(
+    "modoProfessor"
+  ) === "true";
+
+if (modoProfessor) {
+  trocarPerfil();
+}
   }
 );
+
+/*------------------------------------------------------------------------------------------ */
+
+function avaliar(star, nota) {
+
+const mentor =
+  star.closest(".mentor");
+
+const id =
+  mentor.dataset.id;
+
+mentor
+  .querySelectorAll(".stars span")
+  .forEach((s, i) => {
+
+    s.classList.toggle(
+      "active",
+      i < nota
+    );
+
+  });
+
+let notas =
+  JSON.parse(
+    localStorage.getItem(
+      "notas_" + id
+    )
+  ) || [];
+
+notas.push(nota);
+
+localStorage.setItem(
+  "notas_" + id,
+  JSON.stringify(notas)
+);
+
+atualizarMedia(id);
+}
+
+function atualizarMedia(id) {
+
+const mentor =
+  document.querySelector(
+    `.mentor[data-id="${id}"]`
+  );
+
+if (!mentor) return;
+
+const notas =
+  JSON.parse(
+    localStorage.getItem(
+      "notas_" + id
+    )
+  ) || [];
+
+let media = 0;
+
+if (notas.length > 0) {
+
+  media =
+    notas.reduce(
+      (soma, n) =>
+        soma + n,
+      0
+    ) / notas.length;
+
+}
+
+const mediaSpan =
+  mentor.querySelector(
+    ".media"
+  );
+
+if (mediaSpan) {
+
+  mediaSpan.textContent =
+    media.toFixed(1);
+
+}
+}
+
+/* esqueci (memoria ta ruim) */
+
+function atualizarBotoesMentoria(){
+
+const botoes =
+  document.querySelectorAll(".btn-acao");
+
+botoes.forEach(btn => {
+
+  if(document.body.classList.contains("professor")){
+
+    btn.innerHTML = "✔ Aceitar";
+    btn.classList.add("aceitar");
+
+    if(!btn.nextElementSibling ||
+       !btn.nextElementSibling.classList.contains("recusar-btn")){
+
+      const recusar =
+        document.createElement("button");
+
+      recusar.innerHTML = "✖ Recusar";
+      recusar.className = "recusar-btn";
+
+      btn.parentNode.insertBefore(
+        recusar,
+        btn.nextSibling
+      );
+    }
+
+  }else{
+
+    btn.innerHTML = "Agendar";
+    btn.classList.remove("aceitar");
+
+    const recusar =
+      btn.parentNode.querySelector(".recusar-btn");
+
+    if(recusar) recusar.remove();
+  }
+
+});
+
+}
 
 </script>
 

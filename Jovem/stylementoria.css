@@ -777,6 +777,96 @@
     text-decoration:none;
 }
   
+.prof-actions{
+  margin-top:12px;
+  display:flex;
+  gap:8px;
+  justify-content:center;
+  align-items:center;
+}
+
+/* Aceitar */
+.aceitar{
+  background:linear-gradient(135deg,#22c55e,#16a34a) !important;
+  color:#fff;
+
+  width:110px;
+  height:45px;
+
+  border:none;
+  border-radius:10px;
+
+  font-size:45px center;
+  font-weight:600;
+
+  cursor:pointer;
+  transition:.2s;
+}
+
+/* Recusar */
+.recusar-btn{
+  background:linear-gradient(135deg,#ef4444,#dc2626) !important;
+  color:#fff;
+
+  width:110px;
+  height:45px;
+
+  border:none;
+  border-radius:10px;
+
+  font-size:45px center; 
+  font-weight:600;
+
+  cursor:pointer;
+  transition:.2s;
+}
+
+.aceitar:hover,
+.recusar-btn:hover{
+  transform:translateY(-2px);
+}
+/* Hover */
+.aceitar:hover,
+.recusar-btn:hover{
+  transform:translateY(-2px);
+  filter:brightness(1.08);
+}
+/* Responsivo */
+@media (max-width:768px){
+
+  .prof-actions{
+      gap:12px;
+  }
+
+  .prof-actions button,
+  .btn-prof{
+      min-width:calc(50% - 6px);
+  }
+
+}
+
+@media (max-width:480px){
+
+  .prof-actions{
+      flex-direction:column;
+  }
+
+  .prof-actions button,
+  .btn-prof{
+      width:100%;
+      min-width:100%;
+  }
+
+}
+
+/* Links */
+.btn-prof:visited,
+.btn-prof:hover,
+.btn-prof:active,
+.btn-prof:focus{
+  color:#fff;
+  text-decoration:none;
+}
   /* efeito de brilho */
 
   .btn-prof{
@@ -1276,5 +1366,11 @@ body:not(.dark) .dash-card p{
   text-shadow:0 0 10px rgba(205,127,50,.8);
 }
 
-
+.media{
+  color:#facc15;
+  font-size:28px;
+  font-weight:700;
+  display:block;
+  text-align:center;
+}
 
