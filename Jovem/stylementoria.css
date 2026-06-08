@@ -700,7 +700,7 @@
     width:100%;
     min-height:58px;
     padding:0 20px;
-  
+   
     border:none;
     border-radius:16px;
   
@@ -708,8 +708,9 @@
       135deg,
       #10b981 0%,
       #059669 100%
+      
     );
-  
+    
     color:#fff;
     font-size:16px;
     font-weight:700;
@@ -977,11 +978,20 @@
     gap:16px;
 }
 
-.prof-actions button{
+.prof-actions > *{
+    width:100%;
+}
+
+.prof-actions button,
+.prof-actions .btn-prof{
     height:80px;
     border-radius:18px;
     font-size:18px;
     gap:10px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
 
 .prof-actions i{
@@ -1018,7 +1028,7 @@
     box-shadow:
     0 15px 30px rgba(16,185,129,.4);
   }
-  
+
   /* ESTRELAS ANIMADAS */
   
   .stars{
