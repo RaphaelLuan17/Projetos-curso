@@ -42,9 +42,11 @@
       <span id="textoPerfil">Aluno</span>
     </button>
 
-    <div class="container">
-      <h1>Mentoria</h1>
-      <p>Conecte-se com professores e profissionais da área.</p>
+    <h1 id="tituloPagina">Mentoria</h1>
+
+<p id="descricaoPagina">
+  Conecte-se com professores e profissionais da área.
+</p>
 
       <div class="professor-only">
         <div class="prof-actions">
@@ -152,7 +154,7 @@
               Agendar
             </button>
           
-            <span class="fav" onclick="toggleFav(this)">🤍</span>
+            <span class="fav" onclick="toggleFav(this)">🤍</span> 
           </div>
         </div>
 
@@ -184,7 +186,10 @@
               Agendar
             </button>
           
-            <span class="fav" onclick="toggleFav(this)">🤍</span>
+            <button><div class="material-acoes">
+              <button  class="btn-favorito"
+              onclick="toggleFavorito(this.closest('.material').dataset.id,this)">
+              🤍</button>
           </div>
         </div>
 
@@ -1144,7 +1149,7 @@
               Agendar
             </button>
           
-            <span class="fav" onclick="toggleFav(this)">🤍</span>
+         <span class="fav" onclick="toggleFav(this)">🤍</span>
       </div>
     </div>
 
@@ -1176,7 +1181,7 @@
           Agendar
         </button>
       
-        <span class="fav" onclick="toggleFav(this)">🤍</span>
+    <span class="fav" onclick="toggleFav(this)">🤍</span>   
   </div>
 </div>
 
@@ -1208,7 +1213,7 @@
           Agendar
         </button>
       
-        <span class="fav" onclick="toggleFav(this)">🤍</span>
+        <span class="fav" onclick="toggleFav(this)">🤍</span>  
   </div>
 </div>
 
@@ -1272,7 +1277,7 @@
       Agendar
     </button>
   
-    <span class="fav" onclick="toggleFav(this)">🤍</span>
+    <span class="fav" onclick="toggleFav(this)">🤍</span> 
 </div>
 </div>
 
@@ -1336,7 +1341,7 @@
       Agendar
     </button>
   
-    <span class="fav" onclick="toggleFav(this)">🤍</span>
+    <span class="fav" onclick="toggleFav(this)">🤍</span> 
 </div>
 </div>
 
@@ -1368,7 +1373,7 @@
       Agendar
     </button>
   
-    <span class="fav" onclick="toggleFav(this)">🤍</span>
+    <span class="fav" onclick="toggleFav(this)">🤍</span> 
 </div>
 </div>
 
@@ -1432,7 +1437,7 @@
       Agendar
     </button>
   
-    <span class="fav" onclick="toggleFav(this)">🤍</span>
+    <span class="fav" onclick="toggleFav(this)">🤍</span>  
 </div>
 </div>
 
@@ -1464,7 +1469,7 @@
       Agendar
     </button>
   
-    <span class="fav" onclick="toggleFav(this)">🤍</span>
+    <span class="fav" onclick="toggleFav(this)">🤍</span>  
 </div>
 </div>
 
@@ -1575,7 +1580,7 @@
                                             Script
 ========================================================================================================================================================================================== -->
 
-  <script>
+<script>
 
   /* =========================
    DADOS
@@ -2046,6 +2051,12 @@ document.body.classList.toggle(
 const texto =
   document.getElementById("textoPerfil");
 
+  const titulo =
+  document.getElementById("tituloPagina");
+
+const descricao =
+  document.getElementById("descricaoPagina");
+
 if (texto) {
 
   texto.innerText =
@@ -2053,6 +2064,28 @@ if (texto) {
       ? "Modo Professor"
       : "Modo Aluno";
 
+      if (texto) {
+
+texto.innerText =
+  modoProfessor
+    ? "Modo Professor"
+    : "Modo Aluno";
+
+if (titulo) {
+  titulo.innerText =
+    modoProfessor
+      ? "Atividades"
+      : "Mentoria";
+}
+
+if (descricao) {
+  descricao.innerText =
+    modoProfessor
+      ? "Gerencie turmas, avaliações e acompanhe o desempenho dos alunos."
+      : "Conecte-se com professores e profissionais da área.";
+}
+
+}
 }
 
 // mostra/esconde áreas do professor
@@ -2331,9 +2364,8 @@ document.addEventListener(
     "modoProfessor"
   ) === "true";
 
-if (modoProfessor) {
-  trocarPerfil();
-}
+  controlarBotoesProfessor();
+  atualizarTextoPerfil();
   }
 );
 
@@ -2460,25 +2492,106 @@ botoes.forEach(btn => {
 });
 
 }
+/* =========================
+   FAVORITOS
+========================= */
+
+const CHAVE_FAVORITOS = "favoritos";
+
+let favoritos = JSON.parse(localStorage.getItem(CHAVE_FAVORITOS)) || [];
+
+/* Salvar */
+
+function salvarFavoritos() {
+    localStorage.setItem(
+        CHAVE_FAVORITOS,
+        JSON.stringify(favoritos)
+    );
+}
+
+/* Verificar */
+
+function ehFavorito(id) {
+    return favoritos.includes(id);
+}
+
+/* Atualiza botão */
+
+function atualizarBotaoFavorito(botao, ativo) {
+
+    if (!botao) return;
+
+    botao.innerHTML = ativo ? "❤️" : "🤍";
+    botao.classList.toggle("ativo", ativo);
+
+}
+
+/* Favoritar */
+
+function toggleFavorito(id, botao) {
+
+    id = Number(id);
+
+    if (ehFavorito(id)) {
+
+        favoritos = favoritos.filter(item => item !== id);
+
+        atualizarBotaoFavorito(botao, false);
+
+    } else {
+
+        favoritos.push(id);
+
+        atualizarBotaoFavorito(botao, true);
+
+        botao.classList.add("pulse");
+
+        setTimeout(() => {
+            botao.classList.remove("pulse");
+        }, 300);
+
+    }
+
+    salvarFavoritos();
+
+}
+
+/* Carregar favoritos */
+
+function carregarFavoritos() {
+
+    document.querySelectorAll(".material").forEach(card => {
+
+        const id = Number(card.dataset.id);
+
+        const btn = card.querySelector(".btn-favorito");
+
+        if (!btn) return;
+
+        atualizarBotaoFavorito(btn, ehFavorito(id));
+
+    });
+
+}
+
+document.addEventListener("DOMContentLoaded", carregarFavoritos);
+
+/* =========================
+   LIMPAR FAVORITOS
+========================= */
+
+function limparFavoritos(){
+
+    favoritos = [];
+
+    salvarFavoritos();
+
+    carregarFavoritos();
+
+}
 
 </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html> 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
