@@ -1,0 +1,388 @@
+
+  /* RESET */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:'Poppins', sans-serif;
+  min-height:100vh;
+  color:#fff;
+  overflow-x:hidden;
+  transition:0.4s ease;
+  background:#0f172a; /* base fallback */
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  width:100%;
+  padding:18px 8%;
+
+  background:rgba(15,23,42,0.75);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+
+  border-bottom:1px solid rgba(255,255,255,0.05);
+  box-shadow:0 8px 25px rgba(0,0,0,0.25);
+
+  transition:0.3s ease;
+}
+
+.logo{
+  font-size:24px;
+  font-weight:700;
+  color:#2563eb;
+  letter-spacing:1px;
+}
+
+.logo span{
+  color:#1d4ed8;
+}
+
+/* MENU */
+nav{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  align-items:center;
+}
+
+nav a{
+  margin-left:25px;
+  text-decoration:none;
+  color:#2563eb;
+  font-weight:500;
+  position:relative;
+  transition:0.3s ease;
+}
+
+nav a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-5px;
+  width:0;
+  height:2px;
+  background:#2563eb;
+  transition:0.3s ease;
+}
+
+nav a:hover::after{
+  width:100%;
+}
+
+nav a:hover{
+  color:#1d4ed8;
+}
+
+/* BOTÃO TEMA */
+.theme-btn{
+  border:none;
+  background:linear-gradient(135deg,#2563eb,#1d4ed8);
+  color:white;
+
+  width:45px;
+  height:45px;
+  border-radius:50%;
+
+  font-size:20px;
+  cursor:pointer;
+
+  transition:0.3s;
+  box-shadow:0 5px 15px rgba(37,99,235,0.35);
+}
+
+.theme-btn:hover{
+  transform:scale(1.1);
+}
+
+/* =========================
+   CARD PRINCIPAL
+========================= */
+
+.main-box{
+  width:100%;
+  min-height:85vh;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  padding:40px 20px;
+}
+
+.card-avaliacao{
+  width:100%;
+  max-width:650px;
+
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(15px);
+
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:25px;
+
+  padding:40px;
+
+  box-shadow:0 10px 40px rgba(0,0,0,0.4);
+
+  animation:fade 1s ease;
+  transition:0.4s;
+}
+
+@keyframes fade{
+  from{opacity:0; transform:translateY(30px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+/* TOPO */
+.topo h1{
+  font-size:40px;
+  font-weight:700;
+}
+
+.topo p{
+  color:#cbd5e1;
+  margin-top:10px;
+}
+
+/* ÍCONE */
+.juiz-box{
+  font-size:90px;
+  margin-bottom:15px;
+  transition:0.4s;
+}
+
+/* MENSAGEM */
+#juizMsg{
+  font-size:22px;
+  font-weight:500;
+  margin-bottom:25px;
+}
+
+/* ESTRELAS */
+.stars{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  margin-bottom:35px;
+}
+
+.stars span{
+  font-size:55px;
+  cursor:pointer;
+  color:#475569;
+  transition:0.3s;
+}
+
+.stars span:hover{
+  transform:translateY(-8px) scale(1.1);
+}
+
+.stars span.active{
+  color:#facc15;
+  text-shadow:0 0 15px rgba(250,204,21,0.8);
+}
+
+/* BOTÃO FINALIZAR */
+.btn-finalizar{
+  background:linear-gradient(135deg,#22c55e,#16a34a);
+  border:none;
+  color:white;
+
+  padding:15px 35px;
+  border-radius:15px;
+
+  font-size:18px;
+  font-weight:600;
+
+  cursor:pointer;
+  transition:0.3s;
+
+  box-shadow:0 5px 20px rgba(34,197,94,0.4);
+}
+
+.btn-finalizar:hover{
+  transform:translateY(-3px);
+  box-shadow:0 8px 30px rgba(34,197,94,0.5);
+}
+
+/* MÉDIA */
+.media-box{
+  margin-top:35px;
+  padding:20px;
+  border-radius:18px;
+  background:rgba(255,255,255,0.05);
+}
+
+#media{
+  color:#facc15;
+  font-size:28px;
+  font-weight:700;
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:20px;
+  color:#94a3b8;
+}
+
+/* CANVAS */
+canvas{
+  position:fixed;
+  top:0;
+  left:0;
+  pointer-events:none;
+}
+
+/* =========================
+   DARK / LIGHT SYSTEM (PC)
+========================= */
+
+/* DARK SYSTEM */
+@media (prefers-color-scheme: dark){
+    body{
+      background:#0f172a;
+      color:#e5e7eb;
+    }
+  
+    header{
+      background:rgba(15,23,42,0.75);
+    }
+  
+    .card-avaliacao{
+      background:rgba(255,255,255,0.08);
+    }
+  }
+  
+  /* LIGHT SYSTEM */
+  @media (prefers-color-scheme: light){
+    body{
+      background:#f8fafc;
+      color:#0f172a;
+    }
+  
+    header{
+      background:rgba(255,255,255,0.85);
+      border-bottom:1px solid rgba(0,0,0,0.05);
+    }
+  
+    .card-avaliacao{
+      background:#ffffff;
+      border:none;
+    }
+  
+    .topo p{
+      color:#475569;
+    }
+  
+    .media-box{
+      background:#f1f5f9;
+    }
+  
+    footer{
+      color:#475569;
+    }
+  }
+  
+  /* =========================
+     DARK / LIGHT MANUAL
+  ========================= */
+  
+  body.light{
+    background:#f8fafc !important;
+    color:#0f172a !important;
+  }
+  
+  body.dark{
+    background:#0f172a !important;
+    color:#e5e7eb !important;
+  }
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media(max-width:768px){
+  header{
+    flex-direction:column;
+    gap:12px;
+  }
+
+  nav a{
+    margin:5px 10px;
+  }
+
+  .card-avaliacao{
+    padding:30px 20px;
+  }
+
+  .topo h1{
+    font-size:30px;
+  }
+
+  .stars span{
+    font-size:45px;
+  }
+}
+
+/* =========================
+   FOOTER STYLE EXTRA
+========================= */
+
+.footer{
+  margin-top:60px;
+  padding:30px 0;
+  text-align:center;
+
+  background:rgba(255,255,255,0.04);
+  backdrop-filter:blur(10px);
+
+  border-top:1px solid rgba(255,255,255,0.05);
+}
+
+.footer-line{
+  width:80%;
+  max-width:900px;
+  height:1px;
+  margin:0 auto 20px;
+
+  background:linear-gradient(to right, transparent, #3b82f6, transparent);
+}
+
+.footer p{
+  color:#cbd5e1;
+  font-size:14px;
+  letter-spacing:1px;
+}
+
+/* FOOTER LIGHT */
+body.light .footer{
+  background:#ffffff;
+  border-top:1px solid rgba(0,0,0,0.05);
+}
+
+body.light .footer p{
+  color:#64748b;
+}
+
+:root{
+  --primary:#2563eb;
+}
+
+nav a{
+  color:var(--primary);
+}

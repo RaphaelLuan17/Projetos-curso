@@ -16,8 +16,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-
-  /* RESET */
+    /* RESET */
 *{
   margin:0;
   padding:0;
@@ -272,63 +271,63 @@ canvas{
 
 /* DARK SYSTEM */
 @media (prefers-color-scheme: dark){
-  body{
-    background:#0f172a;
-    color:#e5e7eb;
+    body{
+      background:#0f172a;
+      color:#e5e7eb;
+    }
+  
+    header{
+      background:rgba(15,23,42,0.75);
+    }
+  
+    .card-avaliacao{
+      background:rgba(255,255,255,0.08);
+    }
   }
-
-  header{
-    background:rgba(15,23,42,0.75);
+  
+  /* LIGHT SYSTEM */
+  @media (prefers-color-scheme: light){
+    body{
+      background:#f8fafc;
+      color:#0f172a;
+    }
+  
+    header{
+      background:rgba(255,255,255,0.85);
+      border-bottom:1px solid rgba(0,0,0,0.05);
+    }
+  
+    .card-avaliacao{
+      background:#ffffff;
+      border:none;
+    }
+  
+    .topo p{
+      color:#475569;
+    }
+  
+    .media-box{
+      background:#f1f5f9;
+    }
+  
+    footer{
+      color:#475569;
+    }
   }
-
-  .card-avaliacao{
-    background:rgba(255,255,255,0.08);
+  
+  /* =========================
+     DARK / LIGHT MANUAL
+  ========================= */
+  
+  body.light{
+    background:#f8fafc !important;
+    color:#0f172a !important;
   }
-}
-
-/* LIGHT SYSTEM */
-@media (prefers-color-scheme: light){
-  body{
-    background:#f8fafc;
-    color:#0f172a;
+  
+  body.dark{
+    background:#0f172a !important;
+    color:#e5e7eb !important;
   }
-
-  header{
-    background:rgba(255,255,255,0.85);
-    border-bottom:1px solid rgba(0,0,0,0.05);
-  }
-
-  .card-avaliacao{
-    background:#ffffff;
-    border:none;
-  }
-
-  .topo p{
-    color:#475569;
-  }
-
-  .media-box{
-    background:#f1f5f9;
-  }
-
-  footer{
-    color:#475569;
-  }
-}
-
-/* =========================
-   DARK / LIGHT MANUAL
-========================= */
-
-body.light{
-  background:#f8fafc !important;
-  color:#0f172a !important;
-}
-
-body.dark{
-  background:#0f172a !important;
-  color:#e5e7eb !important;
-}
 
 /* =========================
    RESPONSIVO
@@ -405,7 +404,153 @@ nav a{
   color:var(--primary);
 }
 
-  </style>
+/* =========================
+   comentarios
+========================= */
+
+.comentarios-box{
+  margin-top:30px;
+}
+
+.comentarios-box h3{
+  margin-bottom:15px;
+}
+
+#comentario{
+  width:100%;
+  min-height:120px;
+
+  resize:vertical;
+
+  border:none;
+  border-radius:12px;
+
+  padding:15px;
+
+  font-size:16px;
+
+  outline:none;
+
+  background:rgba(255,255,255,.1);
+  color:inherit;
+}
+
+.btn-comentar{
+
+  margin-top:15px;
+
+  background:#2563eb;
+  color:#fff;
+
+  border:none;
+
+  padding:12px 22px;
+
+  border-radius:12px;
+
+  cursor:pointer;
+
+  transition:.3s;
+}
+
+.btn-comentar:hover{
+  transform:translateY(-2px);
+}
+
+#listaComentarios{
+  margin-top:25px;
+}
+
+.comentario{
+
+  background:rgba(255,255,255,.08);
+
+  border-radius:12px;
+
+  padding:15px;
+
+  margin-bottom:15px;
+
+  border-left:4px solid #2563eb;
+}
+
+/*bnt*/
+
+.acoes{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:18px;
+}
+
+.acoes button{
+
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+    padding:10px 16px;
+
+    border:none;
+    border-radius:50px;
+
+    font-size:14px;
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+    background:#1e293b;
+    color:#e2e8f0;
+
+    box-shadow:0 5px 12px rgba(0,0,0,.18);
+}
+
+.acoes button:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 8px 18px rgba(0,0,0,.25);
+}
+
+.btn-like{
+    background:#dbeafe;
+    color:#2563eb;
+}
+
+.btn-like:hover{
+    background:#bfdbfe;
+}
+
+.btn-heart{
+    background:#ffe4e6;
+    color:#e11d48;
+}
+
+.btn-heart:hover{
+    background:#fecdd3;
+}
+
+.btn-reply{
+    background:#dcfce7;
+    color:#15803d;
+}
+
+.btn-reply:hover{
+    background:#bbf7d0;
+}
+
+.btn-delete{
+    background:#fee2e2;
+    color:#dc2626;
+}
+
+.btn-delete:hover{
+    background:#fecaca;
+}
+</style>
+
 </head>
 
 <body>
@@ -469,8 +614,25 @@ nav a{
     </div>
 
   </div>
-
 </section>
+
+<div class="comentarios-box">
+
+  <h2>Comentários da Comunidade</h2>
+
+  <textarea
+      id="comentario"
+      placeholder="Compartilhe sua experiência..."
+  ></textarea>
+
+  <button class="btn-comentar" onclick="enviarComentario()">
+      Publicar Comentário
+  </button>
+
+  <div id="listaComentarios"></div>
+
+</div>
+
 
 <footer class="footer">
   <div class="footer-line"></div>
@@ -722,6 +884,172 @@ window.onload = () => {
 
 };
 
+/* comentarios */
+
+function enviarComentario(){
+
+let texto=document.getElementById("comentario").value.trim();
+
+if(texto==""){
+    alert("Digite um comentário.");
+    return;
+}
+
+let comentarios=
+JSON.parse(localStorage.getItem("comentarios"))||[];
+
+comentarios.unshift({
+
+    nome:"Raphael",
+
+    nota:notaAtual,
+
+    texto:texto,
+
+    likes:0,
+
+    coracoes:0,
+
+    data:new Date().toLocaleString("pt-BR")
+
+});
+
+localStorage.setItem(
+    "comentarios",
+    JSON.stringify(comentarios)
+);
+
+document.getElementById("comentario").value="";
+
+mostrarComentarios();
+
+}
+
+function mostrarComentarios(){
+
+let comentarios=
+JSON.parse(localStorage.getItem("comentarios"))||[];
+
+let lista=document.getElementById("listaComentarios");
+
+lista.innerHTML="";
+
+comentarios.forEach((c,i)=>{
+
+    lista.innerHTML+=`
+
+<div class="comentario">
+
+<div class="comentario-topo">
+
+<div class="usuario">
+
+<div class="avatar">
+${c.nome.charAt(0)}
+</div>
+
+<div>
+
+<div class="nome">${c.nome}</div>
+
+<div class="estrelas">
+${"★".repeat(c.nota)}
+${"☆".repeat(5-c.nota)}
+</div>
+
+<div class="data">
+🕒 ${c.data}
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="texto">
+"${c.texto}"
+</div>
+
+<div class="acoes">
+
+<button onclick="curtir(${i})">
+👍 ${c.likes}
+</button>
+
+<button onclick="amar(${i})">
+❤️ ${c.coracoes}
+</button>
+
+<button onclick="responder(${i})">
+💬 Responder
+</button>
+
+<button onclick="deletarComentario(${i})">
+🗑 Excluir
+</button>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+}
+
+/* curtir */
+
+function curtir(i){
+
+let comentarios=
+JSON.parse(localStorage.getItem("comentarios"));
+
+comentarios[i].likes++;
+
+localStorage.setItem("comentarios",JSON.stringify(comentarios));
+
+mostrarComentarios();
+
+}
+
+/* Coração */
+
+function amar(i){
+
+let comentarios=
+JSON.parse(localStorage.getItem("comentarios"));
+
+comentarios[i].coracoes++;
+
+localStorage.setItem("comentarios",JSON.stringify(comentarios));
+
+mostrarComentarios();
+
+}
+
+/* Excluir */
+
+function deletarComentario(i){
+
+if(confirm("Deseja excluir este comentário?")){
+
+let comentarios=
+JSON.parse(localStorage.getItem("comentarios"));
+
+comentarios.splice(i,1);
+
+localStorage.setItem(
+"comentarios",
+JSON.stringify(comentarios)
+);
+
+mostrarComentarios();
+
+}
+
+}
 </script>
 
 </body>
